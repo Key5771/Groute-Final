@@ -54,7 +54,7 @@ class DetailTourViewController: UIViewController {
     }
     
     @IBAction func addClick(_ sender: Any) {
-        
+        print("Add Button Click")
     }
     
     /*

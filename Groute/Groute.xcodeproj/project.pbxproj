@@ -11,6 +11,8 @@
 		1D6983940A3AEF0E34F8CDDE /* Pods_GrouteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BCDCC47B52B47F23CE80D6 /* Pods_GrouteTests.framework */; };
 		B50DA273246E83A400430811 /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DA272246E83A400430811 /* SecondTabViewController.swift */; };
 		B55B679324582804003736D9 /* UserSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B679224582804003736D9 /* UserSettingController.swift */; };
+		B563956B2494E8E60069E2E6 /* ContentRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563956A2494E8E60069E2E6 /* ContentRouteTableViewCell.swift */; };
+		B56395712494EE370069E2E6 /* RouteReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */; };
 		B584062E2471454700DB89F3 /* SecondTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */; };
 		B58406302471653300DB89F3 /* SecondTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584062F2471653300DB89F3 /* SecondTabModel.swift */; };
 		B5DBD270245C182300BED602 /* SetNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */; };
@@ -79,6 +81,8 @@
 		A53CE80052D854CDFED1155A /* Pods-GrouteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrouteTests.debug.xcconfig"; path = "Target Support Files/Pods-GrouteTests/Pods-GrouteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B50DA272246E83A400430811 /* SecondTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
 		B55B679224582804003736D9 /* UserSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingController.swift; sourceTree = "<group>"; };
+		B563956A2494E8E60069E2E6 /* ContentRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouteTableViewCell.swift; sourceTree = "<group>"; };
+		B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabTableViewCell.swift; sourceTree = "<group>"; };
 		B584062F2471653300DB89F3 /* SecondTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabModel.swift; sourceTree = "<group>"; };
 		B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +213,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B563956C2494E9670069E2E6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */,
+				EABF08FE2456D8DB00519E79 /* SignupViewController.swift */,
+				EABF08FC2456C33E00519E79 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B563956D2494E97E0069E2E6 /* FirstTab */ = {
+			isa = PBXGroup;
+			children = (
+				EA517EF024540D9D00F32E86 /* ViewController.swift */,
+				EAB3410524810C06009EAF80 /* ContentViewController.swift */,
+			);
+			path = FirstTab;
+			sourceTree = "<group>";
+		};
+		B563956E2494E9C80069E2E6 /* ThirdTab */ = {
+			isa = PBXGroup;
+			children = (
+				B55B679224582804003736D9 /* UserSettingController.swift */,
+			);
+			path = ThirdTab;
+			sourceTree = "<group>";
+		};
 		B58406312471653E00DB89F3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,14 +254,11 @@
 		EA4440A6247D28C2002F5D10 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B563956E2494E9C80069E2E6 /* ThirdTab */,
+				B563956D2494E97E0069E2E6 /* FirstTab */,
+				B563956C2494E9670069E2E6 /* Login */,
 				B50DA272246E83A400430811 /* SecondTabViewController.swift */,
-				B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */,
-				B55B679224582804003736D9 /* UserSettingController.swift */,
-				EABF08FE2456D8DB00519E79 /* SignupViewController.swift */,
-				EABF08FC2456C33E00519E79 /* LoginViewController.swift */,
-				EA517EF024540D9D00F32E86 /* ViewController.swift */,
 				EAD7AD43243C3AC600B63AE7 /* MapViewController.swift */,
-				EAB3410524810C06009EAF80 /* ContentViewController.swift */,
 				EAB3410924815347009EAF80 /* SearchViewController.swift */,
 				EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */,
 				EA3ABE252486279100ACDFF3 /* RouteListViewController.swift */,
@@ -247,6 +275,8 @@
 				EAB3410B248153D2009EAF80 /* CityTableViewCell.swift */,
 				EA3ABE232485FCB700ACDFF3 /* AddRouteTableViewCell.swift */,
 				EA3ABE27248627A000ACDFF3 /* RouteListTableViewCell.swift */,
+				B563956A2494E8E60069E2E6 /* ContentRouteTableViewCell.swift */,
+				B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -680,10 +710,12 @@
 				EAD7AD40243C3AC600B63AE7 /* AppDelegate.swift in Sources */,
 				B5DBD270245C182300BED602 /* SetNicknameViewController.swift in Sources */,
 				EA54F51B24541BD500663333 /* TourModel.swift in Sources */,
+				B563956B2494E8E60069E2E6 /* ContentRouteTableViewCell.swift in Sources */,
 				EA517EF124540D9D00F32E86 /* ViewController.swift in Sources */,
 				EA3ABE20248511B500ACDFF3 /* AddRouteViewController.swift in Sources */,
 				EAB3410A24815347009EAF80 /* SearchViewController.swift in Sources */,
 				EAB3410624810C06009EAF80 /* ContentViewController.swift in Sources */,
+				B56395712494EE370069E2E6 /* RouteReviewCollectionViewCell.swift in Sources */,
 				EABF08FB2456ACC900519E79 /* MainTableViewCell.swift in Sources */,
 				EAD7AD42243C3AC600B63AE7 /* SceneDelegate.swift in Sources */,
 				B50DA273246E83A400430811 /* SecondTabViewController.swift in Sources */,

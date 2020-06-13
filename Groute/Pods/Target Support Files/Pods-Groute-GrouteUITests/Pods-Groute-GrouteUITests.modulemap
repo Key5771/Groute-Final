@@ -1,0 +1,6 @@
+framework module Pods_Groute_GrouteUITests {
+  umbrella header "Pods-Groute-GrouteUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

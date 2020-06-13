@@ -1,0 +1,1043 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DD84D8CECB50915E8A6529B /* Pods_Groute_GrouteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3562A0E2E440E4C1B849A9B /* Pods_Groute_GrouteUITests.framework */; };
+		1D6983940A3AEF0E34F8CDDE /* Pods_GrouteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BCDCC47B52B47F23CE80D6 /* Pods_GrouteTests.framework */; };
+		B50DA273246E83A400430811 /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DA272246E83A400430811 /* SecondTabViewController.swift */; };
+		B55B679324582804003736D9 /* UserSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B679224582804003736D9 /* UserSettingController.swift */; };
+		B584062E2471454700DB89F3 /* SecondTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */; };
+		B58406302471653300DB89F3 /* SecondTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584062F2471653300DB89F3 /* SecondTabModel.swift */; };
+		B5DBD270245C182300BED602 /* SetNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */; };
+		EA3ABE20248511B500ACDFF3 /* AddRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */; };
+		EA3ABE242485FCB700ACDFF3 /* AddRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE232485FCB700ACDFF3 /* AddRouteTableViewCell.swift */; };
+		EA3ABE262486279100ACDFF3 /* RouteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE252486279100ACDFF3 /* RouteListViewController.swift */; };
+		EA3ABE28248627A000ACDFF3 /* RouteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE27248627A000ACDFF3 /* RouteListTableViewCell.swift */; };
+		EA3ABE2A24867EA400ACDFF3 /* DetailTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE2924867EA400ACDFF3 /* DetailTourViewController.swift */; };
+		EA4440A9247D335E002F5D10 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4440A8247D335E002F5D10 /* RouteModel.swift */; };
+		EA517EF124540D9D00F32E86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA517EF024540D9D00F32E86 /* ViewController.swift */; };
+		EA54F51B24541BD500663333 /* TourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54F51A24541BD500663333 /* TourModel.swift */; };
+		EAB3410624810C06009EAF80 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3410524810C06009EAF80 /* ContentViewController.swift */; };
+		EAB3410A24815347009EAF80 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3410924815347009EAF80 /* SearchViewController.swift */; };
+		EAB3410C248153D2009EAF80 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3410B248153D2009EAF80 /* CityTableViewCell.swift */; };
+		EAB3410E2481552A009EAF80 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB3410D2481552A009EAF80 /* City.swift */; };
+		EABF08FB2456ACC900519E79 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF08FA2456ACC900519E79 /* MainTableViewCell.swift */; };
+		EABF08FD2456C33E00519E79 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF08FC2456C33E00519E79 /* LoginViewController.swift */; };
+		EABF08FF2456D8DB00519E79 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF08FE2456D8DB00519E79 /* SignupViewController.swift */; };
+		EAD7AD40243C3AC600B63AE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7AD3F243C3AC600B63AE7 /* AppDelegate.swift */; };
+		EAD7AD42243C3AC600B63AE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7AD41243C3AC600B63AE7 /* SceneDelegate.swift */; };
+		EAD7AD44243C3AC600B63AE7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7AD43243C3AC600B63AE7 /* MapViewController.swift */; };
+		EAD7AD47243C3AC600B63AE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD7AD45243C3AC600B63AE7 /* Main.storyboard */; };
+		EAD7AD49243C3ACC00B63AE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAD7AD48243C3ACC00B63AE7 /* Assets.xcassets */; };
+		EAD7AD4C243C3ACC00B63AE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAD7AD4A243C3ACC00B63AE7 /* LaunchScreen.storyboard */; };
+		EAD7AD57243C3ACD00B63AE7 /* GrouteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7AD56243C3ACD00B63AE7 /* GrouteTests.swift */; };
+		EAD7AD62243C3ACD00B63AE7 /* GrouteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7AD61243C3ACD00B63AE7 /* GrouteUITests.swift */; };
+		EAD7AD74243C44AB00B63AE7 /* DaumMap.embeddedframework in Resources */ = {isa = PBXBuildFile; fileRef = EAD7AD72243C44AB00B63AE7 /* DaumMap.embeddedframework */; };
+		EAD7ADA1243C45AA00B63AE7 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD7ADA0243C45AA00B63AE7 /* OpenGLES.framework */; };
+		EAD7ADA3243C464A00B63AE7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD7ADA2243C464A00B63AE7 /* SystemConfiguration.framework */; };
+		EAD7ADA5243C465C00B63AE7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD7ADA4243C465C00B63AE7 /* CoreLocation.framework */; };
+		EAD7ADA7243C466500B63AE7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD7ADA6243C466500B63AE7 /* QuartzCore.framework */; };
+		EAD7ADA9243C466E00B63AE7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD7ADA8243C466E00B63AE7 /* libc++.tbd */; };
+		EAD7ADAB243C467700B63AE7 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD7ADAA243C467700B63AE7 /* libxml2.tbd */; };
+		EAD7ADAD243C468100B63AE7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD7ADAC243C468100B63AE7 /* libsqlite3.tbd */; };
+		EAD7ADAE243C601100B63AE7 /* DaumMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD7AD9C243C452900B63AE7 /* DaumMap.framework */; };
+		EAD7ADB1243C728C00B63AE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAD7ADB0243C728C00B63AE7 /* GoogleService-Info.plist */; };
+		ED1194FBA551969E716D2963 /* Pods_Groute.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73C3B2A5B540EB50E3642384 /* Pods_Groute.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EAD7AD53243C3ACD00B63AE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD7AD34243C3AC600B63AE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAD7AD3B243C3AC600B63AE7;
+			remoteInfo = Groute;
+		};
+		EAD7AD5E243C3ACD00B63AE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD7AD34243C3AC600B63AE7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAD7AD3B243C3AC600B63AE7;
+			remoteInfo = Groute;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0251A5FF72DD3B6BB0A1EB63 /* Pods-Groute.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groute.debug.xcconfig"; path = "Target Support Files/Pods-Groute/Pods-Groute.debug.xcconfig"; sourceTree = "<group>"; };
+		05BCDCC47B52B47F23CE80D6 /* Pods_GrouteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GrouteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53AE1E234649E6BB529E2C82 /* Pods-Groute-GrouteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groute-GrouteUITests.debug.xcconfig"; path = "Target Support Files/Pods-Groute-GrouteUITests/Pods-Groute-GrouteUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6384EDF05AE8C9B8E3F3FCA1 /* Pods-GrouteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrouteTests.release.xcconfig"; path = "Target Support Files/Pods-GrouteTests/Pods-GrouteTests.release.xcconfig"; sourceTree = "<group>"; };
+		73C3B2A5B540EB50E3642384 /* Pods_Groute.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Groute.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95FF3ACE4517BC8875B433FE /* Pods-Groute-GrouteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groute-GrouteUITests.release.xcconfig"; path = "Target Support Files/Pods-Groute-GrouteUITests/Pods-Groute-GrouteUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9DBBDFCB57357F5F26F0FD24 /* Pods-Groute.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Groute.release.xcconfig"; path = "Target Support Files/Pods-Groute/Pods-Groute.release.xcconfig"; sourceTree = "<group>"; };
+		A3562A0E2E440E4C1B849A9B /* Pods_Groute_GrouteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Groute_GrouteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53CE80052D854CDFED1155A /* Pods-GrouteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrouteTests.debug.xcconfig"; path = "Target Support Files/Pods-GrouteTests/Pods-GrouteTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B50DA272246E83A400430811 /* SecondTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
+		B55B679224582804003736D9 /* UserSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingController.swift; sourceTree = "<group>"; };
+		B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabTableViewCell.swift; sourceTree = "<group>"; };
+		B584062F2471653300DB89F3 /* SecondTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabModel.swift; sourceTree = "<group>"; };
+		B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewController.swift; sourceTree = "<group>"; };
+		EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteViewController.swift; sourceTree = "<group>"; };
+		EA3ABE232485FCB700ACDFF3 /* AddRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteTableViewCell.swift; sourceTree = "<group>"; };
+		EA3ABE252486279100ACDFF3 /* RouteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListViewController.swift; sourceTree = "<group>"; };
+		EA3ABE27248627A000ACDFF3 /* RouteListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListTableViewCell.swift; sourceTree = "<group>"; };
+		EA3ABE2924867EA400ACDFF3 /* DetailTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTourViewController.swift; sourceTree = "<group>"; };
+		EA4440A8247D335E002F5D10 /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
+		EA517EF024540D9D00F32E86 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EA54F51A24541BD500663333 /* TourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourModel.swift; sourceTree = "<group>"; };
+		EAB3410524810C06009EAF80 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		EAB3410924815347009EAF80 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		EAB3410B248153D2009EAF80 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		EAB3410D2481552A009EAF80 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		EABF08FA2456ACC900519E79 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		EABF08FC2456C33E00519E79 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EABF08FE2456D8DB00519E79 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		EAD7AD3C243C3AC600B63AE7 /* Groute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Groute.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD7AD3F243C3AC600B63AE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EAD7AD41243C3AC600B63AE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EAD7AD43243C3AC600B63AE7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		EAD7AD46243C3AC600B63AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EAD7AD48243C3ACC00B63AE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EAD7AD4B243C3ACC00B63AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EAD7AD4D243C3ACC00B63AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAD7AD52243C3ACD00B63AE7 /* GrouteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrouteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD7AD56243C3ACD00B63AE7 /* GrouteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrouteTests.swift; sourceTree = "<group>"; };
+		EAD7AD58243C3ACD00B63AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAD7AD5D243C3ACD00B63AE7 /* GrouteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrouteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD7AD61243C3ACD00B63AE7 /* GrouteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrouteUITests.swift; sourceTree = "<group>"; };
+		EAD7AD63243C3ACD00B63AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAD7AD72243C44AB00B63AE7 /* DaumMap.embeddedframework */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DaumMap.embeddedframework; path = ../../../../Downloads/IOS_DaumMap_SDK_1.4.0/lib/DaumMap.embeddedframework; sourceTree = "<group>"; };
+		EAD7AD78243C452900B63AE7 /* map_pinup_custom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pinup_custom@3x.png"; sourceTree = "<group>"; };
+		EAD7AD79243C452900B63AE7 /* map_pin_custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_custom.png; sourceTree = "<group>"; };
+		EAD7AD7A243C452900B63AE7 /* shadow_balloon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadow_balloon.png; sourceTree = "<group>"; };
+		EAD7AD7B243C452900B63AE7 /* map_pinup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pinup.png; sourceTree = "<group>"; };
+		EAD7AD7C243C452900B63AE7 /* detail_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detail_button.png; sourceTree = "<group>"; };
+		EAD7AD7D243C452900B63AE7 /* map_pin_custom@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pin_custom@3x.png"; sourceTree = "<group>"; };
+		EAD7AD7E243C452900B63AE7 /* map_pinup@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pinup@3x.png"; sourceTree = "<group>"; };
+		EAD7AD7F243C452900B63AE7 /* map_pin_shadow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pin_shadow@3x.png"; sourceTree = "<group>"; };
+		EAD7AD80243C452900B63AE7 /* copyright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = copyright.png; sourceTree = "<group>"; };
+		EAD7AD81243C452900B63AE7 /* th_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = th_line.png; sourceTree = "<group>"; };
+		EAD7AD82243C452900B63AE7 /* map_pin_red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pin_red@3x.png"; sourceTree = "<group>"; };
+		EAD7AD83243C452900B63AE7 /* daum_copyright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daum_copyright.png; sourceTree = "<group>"; };
+		EAD7AD84243C452900B63AE7 /* map_pin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pin@3x.png"; sourceTree = "<group>"; };
+		EAD7AD85243C452900B63AE7 /* map_present_tracking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_present_tracking.png; sourceTree = "<group>"; };
+		EAD7AD86243C452900B63AE7 /* map_pin_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_red.png; sourceTree = "<group>"; };
+		EAD7AD88243C452900B63AE7 /* MTMapPOIItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMapPOIItem.h; sourceTree = "<group>"; };
+		EAD7AD89243C452900B63AE7 /* MTMapCameraUpdate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMapCameraUpdate.h; sourceTree = "<group>"; };
+		EAD7AD8A243C452900B63AE7 /* MTMapReverseGeoCoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMapReverseGeoCoder.h; sourceTree = "<group>"; };
+		EAD7AD8B243C452900B63AE7 /* MTMapPolyline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMapPolyline.h; sourceTree = "<group>"; };
+		EAD7AD8C243C452900B63AE7 /* MTMapLocationMarkerItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMapLocationMarkerItem.h; sourceTree = "<group>"; };
+		EAD7AD8D243C452900B63AE7 /* MTMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMapView.h; sourceTree = "<group>"; };
+		EAD7AD8E243C452900B63AE7 /* MTMapGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMapGeometry.h; sourceTree = "<group>"; };
+		EAD7AD8F243C452900B63AE7 /* MTMapCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMapCircle.h; sourceTree = "<group>"; };
+		EAD7AD90243C452900B63AE7 /* info_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_box.png; sourceTree = "<group>"; };
+		EAD7AD91243C452900B63AE7 /* point_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point_sprite.png; sourceTree = "<group>"; };
+		EAD7AD92243C452900B63AE7 /* map_pinup_custom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pinup_custom.png; sourceTree = "<group>"; };
+		EAD7AD93243C452900B63AE7 /* info_box_tail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_box_tail.png; sourceTree = "<group>"; };
+		EAD7AD94243C452900B63AE7 /* noimage256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage256.png; sourceTree = "<group>"; };
+		EAD7AD95243C452900B63AE7 /* map_present_direction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_present_direction.png; sourceTree = "<group>"; };
+		EAD7AD96243C452900B63AE7 /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
+		EAD7AD97243C452900B63AE7 /* map_present.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_present.png; sourceTree = "<group>"; };
+		EAD7AD98243C452900B63AE7 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
+		EAD7AD99243C452900B63AE7 /* map_present_background_update.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_present_background_update.png; sourceTree = "<group>"; };
+		EAD7AD9A243C452900B63AE7 /* daum_th_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daum_th_line.png; sourceTree = "<group>"; };
+		EAD7AD9B243C452900B63AE7 /* map_pin_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_shadow.png; sourceTree = "<group>"; };
+		EAD7AD9C243C452900B63AE7 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
+		EAD7AD9E243C45A300B63AE7 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		EAD7ADA0243C45AA00B63AE7 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		EAD7ADA2243C464A00B63AE7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EAD7ADA4243C465C00B63AE7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EAD7ADA6243C466500B63AE7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EAD7ADA8243C466E00B63AE7 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		EAD7ADAA243C467700B63AE7 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		EAD7ADAC243C468100B63AE7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		EAD7ADAF243C608A00B63AE7 /* Groute-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Groute-Bridging-Header.h"; sourceTree = "<group>"; };
+		EAD7ADB0243C728C00B63AE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EAD7AD39243C3AC600B63AE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD7ADAD243C468100B63AE7 /* libsqlite3.tbd in Frameworks */,
+				EAD7ADAB243C467700B63AE7 /* libxml2.tbd in Frameworks */,
+				EAD7ADAE243C601100B63AE7 /* DaumMap.framework in Frameworks */,
+				EAD7ADA9243C466E00B63AE7 /* libc++.tbd in Frameworks */,
+				EAD7ADA7243C466500B63AE7 /* QuartzCore.framework in Frameworks */,
+				EAD7ADA5243C465C00B63AE7 /* CoreLocation.framework in Frameworks */,
+				EAD7ADA3243C464A00B63AE7 /* SystemConfiguration.framework in Frameworks */,
+				EAD7ADA1243C45AA00B63AE7 /* OpenGLES.framework in Frameworks */,
+				ED1194FBA551969E716D2963 /* Pods_Groute.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD7AD4F243C3ACD00B63AE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D6983940A3AEF0E34F8CDDE /* Pods_GrouteTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD7AD5A243C3ACD00B63AE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DD84D8CECB50915E8A6529B /* Pods_Groute_GrouteUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5BE545F41CB6CD2886D5D822 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0251A5FF72DD3B6BB0A1EB63 /* Pods-Groute.debug.xcconfig */,
+				9DBBDFCB57357F5F26F0FD24 /* Pods-Groute.release.xcconfig */,
+				53AE1E234649E6BB529E2C82 /* Pods-Groute-GrouteUITests.debug.xcconfig */,
+				95FF3ACE4517BC8875B433FE /* Pods-Groute-GrouteUITests.release.xcconfig */,
+				A53CE80052D854CDFED1155A /* Pods-GrouteTests.debug.xcconfig */,
+				6384EDF05AE8C9B8E3F3FCA1 /* Pods-GrouteTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B58406312471653E00DB89F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EA54F51A24541BD500663333 /* TourModel.swift */,
+				B584062F2471653300DB89F3 /* SecondTabModel.swift */,
+				EA4440A8247D335E002F5D10 /* RouteModel.swift */,
+				EAB3410D2481552A009EAF80 /* City.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EA4440A6247D28C2002F5D10 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B50DA272246E83A400430811 /* SecondTabViewController.swift */,
+				B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */,
+				B55B679224582804003736D9 /* UserSettingController.swift */,
+				EABF08FE2456D8DB00519E79 /* SignupViewController.swift */,
+				EABF08FC2456C33E00519E79 /* LoginViewController.swift */,
+				EA517EF024540D9D00F32E86 /* ViewController.swift */,
+				EAD7AD43243C3AC600B63AE7 /* MapViewController.swift */,
+				EAB3410524810C06009EAF80 /* ContentViewController.swift */,
+				EAB3410924815347009EAF80 /* SearchViewController.swift */,
+				EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */,
+				EA3ABE252486279100ACDFF3 /* RouteListViewController.swift */,
+				EA3ABE2924867EA400ACDFF3 /* DetailTourViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EA4440A7247D28DF002F5D10 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */,
+				EABF08FA2456ACC900519E79 /* MainTableViewCell.swift */,
+				EAB3410B248153D2009EAF80 /* CityTableViewCell.swift */,
+				EA3ABE232485FCB700ACDFF3 /* AddRouteTableViewCell.swift */,
+				EA3ABE27248627A000ACDFF3 /* RouteListTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EAD7AD33243C3AC600B63AE7 = {
+			isa = PBXGroup;
+			children = (
+				EAD7AD3E243C3AC600B63AE7 /* Groute */,
+				EAD7AD55243C3ACD00B63AE7 /* GrouteTests */,
+				EAD7AD60243C3ACD00B63AE7 /* GrouteUITests */,
+				EAD7AD3D243C3AC600B63AE7 /* Products */,
+				EAD7AD9D243C45A300B63AE7 /* Frameworks */,
+				5BE545F41CB6CD2886D5D822 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		EAD7AD3D243C3AC600B63AE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7AD3C243C3AC600B63AE7 /* Groute.app */,
+				EAD7AD52243C3ACD00B63AE7 /* GrouteTests.xctest */,
+				EAD7AD5D243C3ACD00B63AE7 /* GrouteUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAD7AD3E243C3AC600B63AE7 /* Groute */ = {
+			isa = PBXGroup;
+			children = (
+				EA4440A7247D28DF002F5D10 /* Cell */,
+				EA4440A6247D28C2002F5D10 /* ViewController */,
+				B58406312471653E00DB89F3 /* Model */,
+				EAD7AD72243C44AB00B63AE7 /* DaumMap.embeddedframework */,
+				EAD7AD3F243C3AC600B63AE7 /* AppDelegate.swift */,
+				EAD7AD41243C3AC600B63AE7 /* SceneDelegate.swift */,
+				EAD7AD45243C3AC600B63AE7 /* Main.storyboard */,
+				EAD7AD48243C3ACC00B63AE7 /* Assets.xcassets */,
+				EAD7AD4A243C3ACC00B63AE7 /* LaunchScreen.storyboard */,
+				EAD7AD4D243C3ACC00B63AE7 /* Info.plist */,
+				EAD7ADB0243C728C00B63AE7 /* GoogleService-Info.plist */,
+				EAD7ADAF243C608A00B63AE7 /* Groute-Bridging-Header.h */,
+			);
+			path = Groute;
+			sourceTree = "<group>";
+		};
+		EAD7AD55243C3ACD00B63AE7 /* GrouteTests */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7AD56243C3ACD00B63AE7 /* GrouteTests.swift */,
+				EAD7AD58243C3ACD00B63AE7 /* Info.plist */,
+			);
+			path = GrouteTests;
+			sourceTree = "<group>";
+		};
+		EAD7AD60243C3ACD00B63AE7 /* GrouteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7AD61243C3ACD00B63AE7 /* GrouteUITests.swift */,
+				EAD7AD63243C3ACD00B63AE7 /* Info.plist */,
+			);
+			path = GrouteUITests;
+			sourceTree = "<group>";
+		};
+		EAD7AD76243C452900B63AE7 /* DaumMap.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7AD77243C452900B63AE7 /* Resources */,
+				EAD7AD9C243C452900B63AE7 /* DaumMap.framework */,
+			);
+			path = DaumMap.embeddedframework;
+			sourceTree = "<group>";
+		};
+		EAD7AD77243C452900B63AE7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7AD78243C452900B63AE7 /* map_pinup_custom@3x.png */,
+				EAD7AD79243C452900B63AE7 /* map_pin_custom.png */,
+				EAD7AD7A243C452900B63AE7 /* shadow_balloon.png */,
+				EAD7AD7B243C452900B63AE7 /* map_pinup.png */,
+				EAD7AD7C243C452900B63AE7 /* detail_button.png */,
+				EAD7AD7D243C452900B63AE7 /* map_pin_custom@3x.png */,
+				EAD7AD7E243C452900B63AE7 /* map_pinup@3x.png */,
+				EAD7AD7F243C452900B63AE7 /* map_pin_shadow@3x.png */,
+				EAD7AD80243C452900B63AE7 /* copyright.png */,
+				EAD7AD81243C452900B63AE7 /* th_line.png */,
+				EAD7AD82243C452900B63AE7 /* map_pin_red@3x.png */,
+				EAD7AD83243C452900B63AE7 /* daum_copyright.png */,
+				EAD7AD84243C452900B63AE7 /* map_pin@3x.png */,
+				EAD7AD85243C452900B63AE7 /* map_present_tracking.png */,
+				EAD7AD86243C452900B63AE7 /* map_pin_red.png */,
+				EAD7AD87243C452900B63AE7 /* Headers */,
+				EAD7AD90243C452900B63AE7 /* info_box.png */,
+				EAD7AD91243C452900B63AE7 /* point_sprite.png */,
+				EAD7AD92243C452900B63AE7 /* map_pinup_custom.png */,
+				EAD7AD93243C452900B63AE7 /* info_box_tail.png */,
+				EAD7AD94243C452900B63AE7 /* noimage256.png */,
+				EAD7AD95243C452900B63AE7 /* map_present_direction.png */,
+				EAD7AD96243C452900B63AE7 /* map_pin.png */,
+				EAD7AD97243C452900B63AE7 /* map_present.png */,
+				EAD7AD98243C452900B63AE7 /* noimage.png */,
+				EAD7AD99243C452900B63AE7 /* map_present_background_update.png */,
+				EAD7AD9A243C452900B63AE7 /* daum_th_line.png */,
+				EAD7AD9B243C452900B63AE7 /* map_pin_shadow.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EAD7AD87243C452900B63AE7 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7AD88243C452900B63AE7 /* MTMapPOIItem.h */,
+				EAD7AD89243C452900B63AE7 /* MTMapCameraUpdate.h */,
+				EAD7AD8A243C452900B63AE7 /* MTMapReverseGeoCoder.h */,
+				EAD7AD8B243C452900B63AE7 /* MTMapPolyline.h */,
+				EAD7AD8C243C452900B63AE7 /* MTMapLocationMarkerItem.h */,
+				EAD7AD8D243C452900B63AE7 /* MTMapView.h */,
+				EAD7AD8E243C452900B63AE7 /* MTMapGeometry.h */,
+				EAD7AD8F243C452900B63AE7 /* MTMapCircle.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		EAD7AD9D243C45A300B63AE7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAD7AD76243C452900B63AE7 /* DaumMap.embeddedframework */,
+				EAD7ADAC243C468100B63AE7 /* libsqlite3.tbd */,
+				EAD7ADAA243C467700B63AE7 /* libxml2.tbd */,
+				EAD7ADA8243C466E00B63AE7 /* libc++.tbd */,
+				EAD7ADA6243C466500B63AE7 /* QuartzCore.framework */,
+				EAD7ADA4243C465C00B63AE7 /* CoreLocation.framework */,
+				EAD7ADA2243C464A00B63AE7 /* SystemConfiguration.framework */,
+				EAD7ADA0243C45AA00B63AE7 /* OpenGLES.framework */,
+				EAD7AD9E243C45A300B63AE7 /* OpenAL.framework */,
+				73C3B2A5B540EB50E3642384 /* Pods_Groute.framework */,
+				A3562A0E2E440E4C1B849A9B /* Pods_Groute_GrouteUITests.framework */,
+				05BCDCC47B52B47F23CE80D6 /* Pods_GrouteTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EAD7AD3B243C3AC600B63AE7 /* Groute */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAD7AD66243C3ACD00B63AE7 /* Build configuration list for PBXNativeTarget "Groute" */;
+			buildPhases = (
+				F2317AD8A1FDE2DB2B5203D4 /* [CP] Check Pods Manifest.lock */,
+				EAD7AD38243C3AC600B63AE7 /* Sources */,
+				EAD7AD39243C3AC600B63AE7 /* Frameworks */,
+				EAD7AD3A243C3AC600B63AE7 /* Resources */,
+				DD5D05D26D79E3C667DDC14E /* [CP] Embed Pods Frameworks */,
+				85321029652E060123BE4AFA /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Groute;
+			productName = Groute;
+			productReference = EAD7AD3C243C3AC600B63AE7 /* Groute.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EAD7AD51243C3ACD00B63AE7 /* GrouteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAD7AD69243C3ACD00B63AE7 /* Build configuration list for PBXNativeTarget "GrouteTests" */;
+			buildPhases = (
+				7E8673D5AACE4DCB03B15C13 /* [CP] Check Pods Manifest.lock */,
+				EAD7AD4E243C3ACD00B63AE7 /* Sources */,
+				EAD7AD4F243C3ACD00B63AE7 /* Frameworks */,
+				EAD7AD50243C3ACD00B63AE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAD7AD54243C3ACD00B63AE7 /* PBXTargetDependency */,
+			);
+			name = GrouteTests;
+			productName = GrouteTests;
+			productReference = EAD7AD52243C3ACD00B63AE7 /* GrouteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EAD7AD5C243C3ACD00B63AE7 /* GrouteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAD7AD6C243C3ACD00B63AE7 /* Build configuration list for PBXNativeTarget "GrouteUITests" */;
+			buildPhases = (
+				7F190C46CE86ADD1E05A7315 /* [CP] Check Pods Manifest.lock */,
+				EAD7AD59243C3ACD00B63AE7 /* Sources */,
+				EAD7AD5A243C3ACD00B63AE7 /* Frameworks */,
+				EAD7AD5B243C3ACD00B63AE7 /* Resources */,
+				EA423F86DFFDF05DEA25EAB3 /* [CP] Embed Pods Frameworks */,
+				A8D6A2802998BDE776A4E2B6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAD7AD5F243C3ACD00B63AE7 /* PBXTargetDependency */,
+			);
+			name = GrouteUITests;
+			productName = GrouteUITests;
+			productReference = EAD7AD5D243C3ACD00B63AE7 /* GrouteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EAD7AD34243C3AC600B63AE7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = "김기현";
+				TargetAttributes = {
+					EAD7AD3B243C3AC600B63AE7 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					EAD7AD51243C3ACD00B63AE7 = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = EAD7AD3B243C3AC600B63AE7;
+					};
+					EAD7AD5C243C3ACD00B63AE7 = {
+						CreatedOnToolsVersion = 11.4;
+						TestTargetID = EAD7AD3B243C3AC600B63AE7;
+					};
+				};
+			};
+			buildConfigurationList = EAD7AD37243C3AC600B63AE7 /* Build configuration list for PBXProject "Groute" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EAD7AD33243C3AC600B63AE7;
+			productRefGroup = EAD7AD3D243C3AC600B63AE7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EAD7AD3B243C3AC600B63AE7 /* Groute */,
+				EAD7AD51243C3ACD00B63AE7 /* GrouteTests */,
+				EAD7AD5C243C3ACD00B63AE7 /* GrouteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAD7AD3A243C3AC600B63AE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD7AD4C243C3ACC00B63AE7 /* LaunchScreen.storyboard in Resources */,
+				EAD7ADB1243C728C00B63AE7 /* GoogleService-Info.plist in Resources */,
+				EAD7AD49243C3ACC00B63AE7 /* Assets.xcassets in Resources */,
+				EAD7AD47243C3AC600B63AE7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD7AD50243C3ACD00B63AE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD7AD74243C44AB00B63AE7 /* DaumMap.embeddedframework in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD7AD5B243C3ACD00B63AE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7E8673D5AACE4DCB03B15C13 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GrouteTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F190C46CE86ADD1E05A7315 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Groute-GrouteUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85321029652E060123BE4AFA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Groute/Pods-Groute-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Groute/Pods-Groute-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Groute/Pods-Groute-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8D6A2802998BDE776A4E2B6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Groute-GrouteUITests/Pods-Groute-GrouteUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Groute-GrouteUITests/Pods-Groute-GrouteUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Groute-GrouteUITests/Pods-Groute-GrouteUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD5D05D26D79E3C667DDC14E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Groute/Pods-Groute-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Groute/Pods-Groute-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Groute/Pods-Groute-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA423F86DFFDF05DEA25EAB3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Groute-GrouteUITests/Pods-Groute-GrouteUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Groute-GrouteUITests/Pods-Groute-GrouteUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Groute-GrouteUITests/Pods-Groute-GrouteUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2317AD8A1FDE2DB2B5203D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Groute-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAD7AD38243C3AC600B63AE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B55B679324582804003736D9 /* UserSettingController.swift in Sources */,
+				EA3ABE262486279100ACDFF3 /* RouteListViewController.swift in Sources */,
+				EA3ABE242485FCB700ACDFF3 /* AddRouteTableViewCell.swift in Sources */,
+				B584062E2471454700DB89F3 /* SecondTabTableViewCell.swift in Sources */,
+				EA3ABE2A24867EA400ACDFF3 /* DetailTourViewController.swift in Sources */,
+				EAB3410E2481552A009EAF80 /* City.swift in Sources */,
+				EA3ABE28248627A000ACDFF3 /* RouteListTableViewCell.swift in Sources */,
+				EAB3410C248153D2009EAF80 /* CityTableViewCell.swift in Sources */,
+				EABF08FD2456C33E00519E79 /* LoginViewController.swift in Sources */,
+				EAD7AD44243C3AC600B63AE7 /* MapViewController.swift in Sources */,
+				EABF08FF2456D8DB00519E79 /* SignupViewController.swift in Sources */,
+				EA4440A9247D335E002F5D10 /* RouteModel.swift in Sources */,
+				EAD7AD40243C3AC600B63AE7 /* AppDelegate.swift in Sources */,
+				B5DBD270245C182300BED602 /* SetNicknameViewController.swift in Sources */,
+				EA54F51B24541BD500663333 /* TourModel.swift in Sources */,
+				EA517EF124540D9D00F32E86 /* ViewController.swift in Sources */,
+				EA3ABE20248511B500ACDFF3 /* AddRouteViewController.swift in Sources */,
+				EAB3410A24815347009EAF80 /* SearchViewController.swift in Sources */,
+				EAB3410624810C06009EAF80 /* ContentViewController.swift in Sources */,
+				EABF08FB2456ACC900519E79 /* MainTableViewCell.swift in Sources */,
+				EAD7AD42243C3AC600B63AE7 /* SceneDelegate.swift in Sources */,
+				B50DA273246E83A400430811 /* SecondTabViewController.swift in Sources */,
+				B58406302471653300DB89F3 /* SecondTabModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD7AD4E243C3ACD00B63AE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD7AD57243C3ACD00B63AE7 /* GrouteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAD7AD59243C3ACD00B63AE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAD7AD62243C3ACD00B63AE7 /* GrouteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EAD7AD54243C3ACD00B63AE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAD7AD3B243C3AC600B63AE7 /* Groute */;
+			targetProxy = EAD7AD53243C3ACD00B63AE7 /* PBXContainerItemProxy */;
+		};
+		EAD7AD5F243C3ACD00B63AE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAD7AD3B243C3AC600B63AE7 /* Groute */;
+			targetProxy = EAD7AD5E243C3ACD00B63AE7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EAD7AD45243C3AC600B63AE7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAD7AD46243C3AC600B63AE7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EAD7AD4A243C3ACC00B63AE7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAD7AD4B243C3ACC00B63AE7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EAD7AD64243C3ACD00B63AE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EAD7AD65243C3ACD00B63AE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EAD7AD67243C3ACD00B63AE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0251A5FF72DD3B6BB0A1EB63 /* Pods-Groute.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U53BLS7M93;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DaumMap.embeddedframework",
+				);
+				INFOPLIST_FILE = Groute/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = key.Groute;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Groute/Groute-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EAD7AD68243C3ACD00B63AE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DBBDFCB57357F5F26F0FD24 /* Pods-Groute.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U53BLS7M93;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DaumMap.embeddedframework",
+				);
+				INFOPLIST_FILE = Groute/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = key.Groute;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Groute/Groute-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EAD7AD6A243C3ACD00B63AE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A53CE80052D854CDFED1155A /* Pods-GrouteTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U53BLS7M93;
+				INFOPLIST_FILE = GrouteTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = key.GrouteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Groute.app/Groute";
+			};
+			name = Debug;
+		};
+		EAD7AD6B243C3ACD00B63AE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6384EDF05AE8C9B8E3F3FCA1 /* Pods-GrouteTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U53BLS7M93;
+				INFOPLIST_FILE = GrouteTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = key.GrouteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Groute.app/Groute";
+			};
+			name = Release;
+		};
+		EAD7AD6D243C3ACD00B63AE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53AE1E234649E6BB529E2C82 /* Pods-Groute-GrouteUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U53BLS7M93;
+				INFOPLIST_FILE = GrouteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = key.GrouteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Groute;
+			};
+			name = Debug;
+		};
+		EAD7AD6E243C3ACD00B63AE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95FF3ACE4517BC8875B433FE /* Pods-Groute-GrouteUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U53BLS7M93;
+				INFOPLIST_FILE = GrouteUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = key.GrouteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Groute;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EAD7AD37243C3AC600B63AE7 /* Build configuration list for PBXProject "Groute" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD7AD64243C3ACD00B63AE7 /* Debug */,
+				EAD7AD65243C3ACD00B63AE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAD7AD66243C3ACD00B63AE7 /* Build configuration list for PBXNativeTarget "Groute" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD7AD67243C3ACD00B63AE7 /* Debug */,
+				EAD7AD68243C3ACD00B63AE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAD7AD69243C3ACD00B63AE7 /* Build configuration list for PBXNativeTarget "GrouteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD7AD6A243C3ACD00B63AE7 /* Debug */,
+				EAD7AD6B243C3ACD00B63AE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAD7AD6C243C3ACD00B63AE7 /* Build configuration list for PBXNativeTarget "GrouteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAD7AD6D243C3ACD00B63AE7 /* Debug */,
+				EAD7AD6E243C3ACD00B63AE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EAD7AD34243C3AC600B63AE7 /* Project object */;
+}

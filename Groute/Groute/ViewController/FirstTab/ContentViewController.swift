@@ -18,13 +18,16 @@ class ContentViewController: UIViewController {
     @IBOutlet var routeTableView: UITableView!
     @IBOutlet var routeReviewCollectionView: UICollectionView!
     @IBOutlet var reviewCount: UILabel!
+    @IBOutlet var numberOfLikes: UILabel!
+    @IBOutlet var likebtn: UIButton!
     
     
-    
+        
     var contentId: String = ""
     
     var content: [routeName] = []
     var review: [Comment] = []
+    var like: [Favorite] = []
     let db = Firestore.firestore()
     let firebaseAuth = Auth.auth()
 
@@ -34,14 +37,71 @@ class ContentViewController: UIViewController {
         getContent()
         getRoute()
         getReview()
+        getLikeCount()
         routeTableView.delegate = self
         routeTableView.dataSource = self
         routeReviewCollectionView.delegate = self
         routeReviewCollectionView.dataSource = self
     }
+    //MARK: - Like
+    @IBAction func clickLikeBtn(_ sender: Any) {
+        getExistLikeLocation()
+//        getLikeCount()
+    }
     
+    func checkLikeImage()  {
+        let connectingEmail = UserDefaults.standard.value(forKey: "savedId")!
+        let likeLocation = db.collection("Content").document(contentId).collection("Favorite")
+        let checkLike = likeLocation.whereField("email", isEqualTo: connectingEmail)
+        checkLike.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error : \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.likebtn.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+                    return
+                }
+                self.likebtn.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+            }
+        }
+    }
+    func getExistLikeLocation() {
+        let connectingEmail = UserDefaults.standard.value(forKey: "savedId")!
+        let likeLocation = db.collection("Content").document(contentId).collection("Favorite")
+        let checkLike = likeLocation.whereField("email", isEqualTo: connectingEmail)
+        checkLike.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error : \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    likeLocation.document(document.documentID).delete()
+                    self.likebtn.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+                    self.getLikeCount()
+                    return
+                }
+                likeLocation.addDocument(data: ["email" : connectingEmail])
+                self.likebtn.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+                self.getLikeCount()
+            }
+        }
+        }
+    func getLikeCount(){
+        checkLikeImage()
+        db.collection("Content").document(contentId).collection("Favorite").getDocuments{ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting Review Data: \(err)")
+            } else {
+                self.like = []
+                for document in querySnapshot!.documents{
+                    let getLike : Favorite = Favorite(email: document.get("email") as! String)
+                    self.like.append(getLike)
+                }
+                self.numberOfLikes.text = "\(self.like.count)"
+            }
+        }
+    }
     //MARK: - Get data function
-    
+
         func getRoute(){
             db.collection("Content").document(contentId).collection("Route").getDocuments() {
                 (querySnapshot, err) in

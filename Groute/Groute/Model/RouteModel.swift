@@ -28,4 +28,5 @@ struct Comment {
     let email: String
     let content: String
     let timestamp: Date
+    let calcTime : String
 }

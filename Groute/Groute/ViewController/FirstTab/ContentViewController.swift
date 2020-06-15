@@ -20,6 +20,7 @@ class ContentViewController: UIViewController {
     @IBOutlet var reviewCount: UILabel!
     @IBOutlet var numberOfLikes: UILabel!
     @IBOutlet var likebtn: UIButton!
+    @IBOutlet var reviewTextField: UITextField!
     
     
         
@@ -30,6 +31,9 @@ class ContentViewController: UIViewController {
     var like: [Favorite] = []
     let db = Firestore.firestore()
     let firebaseAuth = Auth.auth()
+    var currentTime: String {
+        return "\(NSDate().timeIntervalSince1970 * 1000)"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +47,33 @@ class ContentViewController: UIViewController {
         routeReviewCollectionView.delegate = self
         routeReviewCollectionView.dataSource = self
     }
+
+    //MARK: - writeReview
+    @IBAction func writeReview(_ sender: Any) {
+        let connectedEmail = UserDefaults.standard.value(forKey: "savedId")!
+        let writtenReview = reviewTextField.text!
+        let reviewLocation = db.collection("Content").document(contentId).collection("Comment")
+        
+        if writtenReview == "" {
+            print("Empty")
+            return
+        } else {
+            reviewLocation.addDocument(data: ["comment": writtenReview,
+                                              "email" : connectedEmail,
+                                              "timestamp" : Date()])
+            reviewTextField.text = ""
+            getReview()
+            let alert = UIAlertController(title: "감사합니다", message: "소중한 리뷰 감사합니다!" ,preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true, completion:  nil)
+            
+        }
+    }
+
     //MARK: - Like
     @IBAction func clickLikeBtn(_ sender: Any) {
         getExistLikeLocation()
-//        getLikeCount()
     }
     
     func checkLikeImage()  {
@@ -126,13 +153,40 @@ class ContentViewController: UIViewController {
             } else {
                 self.review = []
                 for document in querySnapshot!.documents{
-                    let getReview : Comment = Comment(email: document.get("email") as! String, content: document.get("comment") as! String, timestamp: (document.get("timestamp") as! Timestamp).dateValue())
+                    let time = (document.get("timestamp") as! Timestamp).dateValue()
+                    let checkNum = Date().timeIntervalSince(time)
+                    let getReview : Comment = Comment(email: document.get("email") as! String, content: document.get("comment") as! String, timestamp: (document.get("timestamp") as! Timestamp).dateValue() ,calcTime: self.calTime(time: checkNum))
                     self.review.append(getReview)
-                    print(self.review)
                 }
+                self.review.sort { $0.timestamp > $1.timestamp}
                 self.routeReviewCollectionView.reloadData()
                 self.reviewCount.text = "(\(self.review.count))"
             }
+        }
+    }
+    func calTime(time: Double) -> String {
+        let result : String
+        if time > 0 && time < 60 {
+            result = "방금전"
+            return result
+        } else if time >= 60 && time < 3600 {
+            result = "\(Int(time / 60))분전"
+            return result
+        }else if time >= 3600 && time < 86400 {
+            result = "\(Int(time / 3600))시간전"
+            return result
+        }else if time >= 86400 && time < 604800 {
+            result = "\(Int(time / 86400))일전"
+            return result
+        }else if time >= 604800 && time < 2419200 {
+            result = "\(Int(time / 604800))주전"
+            return result
+        }else if time >= 2419200 && time < 29030400 {
+            result = "\(Int(time / 2419200))달전"
+            return result
+        }else {
+            result = "몰라 ㅅㅂ"
+            return result
         }
     }
     func getContent() {
@@ -196,7 +250,7 @@ extension ContentViewController : UICollectionViewDelegate,UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reviewList", for: indexPath) as! RouteReviewCollectionViewCell
         cell.userEmail.text = review[indexPath.row].email
         cell.reviewComment.text = review[indexPath.row].content
-        cell.reviewTimestamp.text = review[indexPath.row].timestamp as? String
+        cell.reviewTimestamp.text = review[indexPath.row].calcTime
         return cell
     }
     

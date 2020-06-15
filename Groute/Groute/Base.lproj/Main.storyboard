@@ -1196,7 +1196,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfn-WI-iiq">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfn-WI-iiq">
                                                             <rect key="frame" x="24" y="37" width="299" height="21"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="299" id="YYh-IU-iZ7"/>
@@ -1206,14 +1206,14 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldu-Mf-tNa">
-                                                            <rect key="frame" x="364" y="36" width="42" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldu-Mf-tNa">
+                                                            <rect key="frame" x="331" y="36" width="75" height="21"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="42" id="N3t-kd-A2g"/>
+                                                                <constraint firstAttribute="width" constant="75" id="N3t-kd-A2g"/>
                                                                 <constraint firstAttribute="height" constant="21" id="o7V-fW-kiL"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1221,6 +1221,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="Ldu-Mf-tNa" secondAttribute="trailing" constant="8" id="AEd-q0-qOu"/>
                                                         <constraint firstItem="yfn-WI-iiq" firstAttribute="top" secondItem="m0o-Wh-xMe" secondAttribute="bottom" constant="8" id="N52-Xh-VBv"/>
                                                         <constraint firstAttribute="trailing" secondItem="m0o-Wh-xMe" secondAttribute="trailing" id="N8H-a9-8cX"/>
+                                                        <constraint firstItem="Ldu-Mf-tNa" firstAttribute="leading" secondItem="yfn-WI-iiq" secondAttribute="trailing" constant="8" id="PO9-IN-s7v"/>
                                                         <constraint firstItem="m0o-Wh-xMe" firstAttribute="leading" secondItem="3qs-yH-UmM" secondAttribute="leading" constant="8" id="XAj-uV-7TL"/>
                                                         <constraint firstItem="Ldu-Mf-tNa" firstAttribute="top" secondItem="m0o-Wh-xMe" secondAttribute="bottom" constant="7" id="d9o-ee-x3b"/>
                                                         <constraint firstItem="yfn-WI-iiq" firstAttribute="leading" secondItem="3qs-yH-UmM" secondAttribute="leading" constant="24" id="ptN-7r-T5o"/>
@@ -1239,7 +1240,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QB1-jw-JoN" userLabel="WriteCommentView">
                                         <rect key="frame" x="0.0" y="865.5" width="414" height="60"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="리뷰를 적어주세요!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pyq-KI-LDZ">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="리뷰를 적어주세요!" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pyq-KI-LDZ">
                                                 <rect key="frame" x="8" y="13" width="343" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="343" id="WSx-K1-2xl"/>
@@ -1255,6 +1256,9 @@
                                                     <constraint firstAttribute="height" constant="30" id="CWR-ye-mLj"/>
                                                 </constraints>
                                                 <state key="normal" title="입력"/>
+                                                <connections>
+                                                    <action selector="writeReview:" destination="Q8T-tg-rgw" eventType="touchUpInside" id="4a4-HD-9P4"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1318,6 +1322,7 @@
                         <outlet property="memoLabel" destination="lIx-5c-coA" id="ags-FI-Tk3"/>
                         <outlet property="numberOfLikes" destination="IpA-pF-aDK" id="nu1-VX-6ep"/>
                         <outlet property="reviewCount" destination="6Vy-dG-jBY" id="SuS-bl-1EL"/>
+                        <outlet property="reviewTextField" destination="Pyq-KI-LDZ" id="hxt-de-RM4"/>
                         <outlet property="routeReviewCollectionView" destination="RyM-so-6Ia" id="Bgk-HY-Dbm"/>
                         <outlet property="routeTableView" destination="RJx-cB-ubS" id="An2-5G-cpg"/>
                         <outlet property="timeLabel" destination="LqV-FA-14R" id="Vn7-6c-Qjj"/>

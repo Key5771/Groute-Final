@@ -15,6 +15,10 @@ class AddRouteViewController: UIViewController {
     @IBOutlet weak var pickerView: UIDatePicker!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var confirmButtonView: UIView!
+    @IBOutlet var startDate: UILabel!
+    @IBOutlet var endDate: UILabel!
+    @IBOutlet var hideView: UIView!
     
     var mapView: MTMapView?
     var cellCount: Int = 0
@@ -22,14 +26,16 @@ class AddRouteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        confirmButtonView.isHidden = true
+        confirmButtonView.isUserInteractionEnabled = false
         // Jeju National University Point
         let mapPoint: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: point.latitude, longitude: point.longitude))
         // Jeju City Hall
         let mapPoint2: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 33.499598, longitude:  126.531259))
         
         pickerView.isHidden = true
-        
+        hideView.isHidden = true
+        self.hideView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -38,7 +44,17 @@ class AddRouteViewController: UIViewController {
 //        loadKakaoMap()
         
     }
+    func setEnableConfirmButton(){
+        confirmButtonView.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: "calTime:")
+        self.confirmButtonView.addGestureRecognizer(gesture)
+    }
     
+    @objc func calTime(_ sender:UITapGestureRecognizer){
+       print("touched")
+        hideView.isHidden = false
+    }
+
     @IBAction func selectStartDate(_ sender: Any) {
         pickerView.isHidden = false
         createStartDatePicker()
@@ -92,12 +108,19 @@ class AddRouteViewController: UIViewController {
     
     @objc func finishDoneClick() {
         let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        dateFormatter.dateFormat = "MM월 dd일"
         let selectedDate: String = dateFormatter.string(from: pickerView.date)
-        finishTextField.text = selectedDate
+        confirmButtonView.isHidden = false
+        setEnableConfirmButton()
+        startDate.text = startTextField.text
+        endDate.text = selectedDate
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        let showSelectedDate: String = dateFormatter.string(from: pickerView.date)
+        finishTextField.text = showSelectedDate
         finishTextField.resignFirstResponder()
         pickerView.isHidden = true
         tableView.reloadData()
+        print(selectedDate)
     }
     
     @objc func finishCancelClick() {

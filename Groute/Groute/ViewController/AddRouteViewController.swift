@@ -23,26 +23,30 @@ class AddRouteViewController: UIViewController {
     var mapView: MTMapView?
     var cellCount: Int = 0
     var point: GeoPoint = GeoPoint(latitude: 0, longitude: 0)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         confirmButtonView.isHidden = true
         confirmButtonView.isUserInteractionEnabled = false
         // Jeju National University Point
-        let mapPoint: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: point.latitude, longitude: point.longitude))
-        // Jeju City Hall
-        let mapPoint2: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 33.499598, longitude:  126.531259))
+
         
         pickerView.isHidden = true
         hideView.isHidden = true
         self.hideView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isHidden = true
         
-        innerView.backgroundColor = UIColor.gray
-        innerView.addSubview(loadKakaoMap(point: mapPoint, point2: mapPoint2))
+
 //        loadKakaoMap()
         
+    }
+    func loadMapView() {
+        let mapPoint: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: point.latitude, longitude: point.longitude))
+        // Jeju City Hall
+        let mapPoint2: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 33.499598, longitude:  126.531259))
+        innerView.backgroundColor = UIColor.gray
+        innerView.addSubview(loadKakaoMap(point: mapPoint, point2: mapPoint2))
     }
     func setEnableConfirmButton(){
         confirmButtonView.isUserInteractionEnabled = true
@@ -52,9 +56,16 @@ class AddRouteViewController: UIViewController {
     
     @objc func calTime(_ sender:UITapGestureRecognizer){
        print("touched")
+        tableView.isHidden = false
         hideView.isHidden = false
+        let firstDay = UserDefaults.standard.value(forKey: "firstDate") as! Date
+        let lastDay = UserDefaults.standard.value(forKey: "lastDate") as! Date
+        let result = lastDay.timeIntervalSince(firstDay)
+        let days : Int = Int(result / 86399) + 1
+        UserDefaults.standard.set(days, forKey: "days")
+        tableView.reloadData()
+        loadMapView()
     }
-
     @IBAction func selectStartDate(_ sender: Any) {
         pickerView.isHidden = false
         createStartDatePicker()
@@ -79,6 +90,7 @@ class AddRouteViewController: UIViewController {
     }
     
     @objc func doneClick() {
+        UserDefaults.standard.set(pickerView.date, forKey: "firstDate")
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         let selectedDate: String = dateFormatter.string(from: pickerView.date)
@@ -107,6 +119,7 @@ class AddRouteViewController: UIViewController {
     }
     
     @objc func finishDoneClick() {
+        UserDefaults.standard.set(pickerView.date, forKey: "lastDate")
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM월 dd일"
         let selectedDate: String = dateFormatter.string(from: pickerView.date)
@@ -120,7 +133,7 @@ class AddRouteViewController: UIViewController {
         finishTextField.resignFirstResponder()
         pickerView.isHidden = true
         tableView.reloadData()
-        print(selectedDate)
+        print(pickerView.date)
     }
     
     @objc func finishCancelClick() {
@@ -142,19 +155,21 @@ class AddRouteViewController: UIViewController {
 
 extension AddRouteViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        let sectionCount = UserDefaults.standard.value(forKey: "days") as? Int ?? 0
+        return sectionCount
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return startTextField.text
-        } else if section == 1 {
-            return finishTextField.text
-        } else if section == 2 {
-            return "장소추가"
-        }
         
-        return nil
+//        if section == 0 {
+//            return "Day 1"
+//        } else if section == 1 {
+//            return finishTextField.text
+//        } else if section == 2 {
+//            return "장소추가"
+//        }
+//
+        return "day - \(section+1)"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -231,8 +231,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B1y-Wx-Ftu">
-                                <rect key="frame" x="0.0" y="612" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="527" width="414" height="335"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="KTH-jm-F9d">
+                                    <rect key="frame" x="0.0" y="78.5" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="route" id="jr6-BK-ozi" customClass="AddRouteTableViewCell" customModule="Groute" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="22.5"/>
@@ -366,7 +371,7 @@
                             <constraint firstItem="moO-au-2Ec" firstAttribute="top" secondItem="RDG-tN-Agw" secondAttribute="bottom" constant="77" id="oQU-ib-E2b"/>
                             <constraint firstItem="hTx-bB-WQz" firstAttribute="leading" secondItem="OJ5-L2-2dP" secondAttribute="leading" constant="87" id="oXh-cy-7Ly"/>
                             <constraint firstItem="moO-au-2Ec" firstAttribute="top" secondItem="YqA-sI-HIW" secondAttribute="bottom" constant="77" id="rMN-Le-gUG"/>
-                            <constraint firstItem="B1y-Wx-Ftu" firstAttribute="top" secondItem="moO-au-2Ec" secondAttribute="bottom" constant="93" id="s0V-FB-d0X"/>
+                            <constraint firstItem="B1y-Wx-Ftu" firstAttribute="top" secondItem="moO-au-2Ec" secondAttribute="bottom" constant="8" id="s0V-FB-d0X"/>
                             <constraint firstItem="e6r-nc-Snc" firstAttribute="trailing" secondItem="OJ5-L2-2dP" secondAttribute="trailing" id="uan-tQ-fyl"/>
                             <constraint firstItem="OJ5-L2-2dP" firstAttribute="trailing" secondItem="RDG-tN-Agw" secondAttribute="trailing" constant="20" id="un9-hy-bO7"/>
                         </constraints>

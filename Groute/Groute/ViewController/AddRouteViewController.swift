@@ -173,32 +173,31 @@ extension AddRouteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            cellCount = 1
-        } else if section == 1 {
-            cellCount = 1
-        } else if section == 2 {
-            cellCount = 1
-        }
-        
-        return cellCount
+//        if section == 0 {
+//            cellCount = 1
+//        } else if section == 1 {
+//            cellCount = 1
+//        } else if section == 2 {
+//            cellCount = 1
+//        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "route", for: indexPath) as! AddRouteTableViewCell
         
-        cell.addRouteButton.isHidden = true
+        cell.addRouteButton.isHidden = false
         
-        if indexPath.section == 0 {
-            cell.locationLabel.text = "제주대학교"
-        } else if indexPath.section == 1 {
-            cell.locationLabel.text = "제주시청"
-        } else if indexPath.section == 2 {
-            if cell.locationLabel.text == "" {
-                cell.addRouteButton.isHidden = false
-            }
-        }
-        
+//        if indexPath.section == 0 {
+//            cell.locationLabel.text = "제주대학교"
+//        } else if indexPath.section == 1 {
+//            cell.locationLabel.text = "제주시청"
+//        } else if indexPath.section == 2 {
+//            if cell.locationLabel.text == "" {
+//                cell.addRouteButton.isHidden = false
+//            }
+//        }
+//
         return cell
     }
     

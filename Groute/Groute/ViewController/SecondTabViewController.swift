@@ -26,6 +26,7 @@ class SecondTabViewController: UIViewController {
         secondTableview.delegate = self
         secondTableview.dataSource = self
     }
+
     
     
     override func viewWillAppear(_ animated: Bool) {

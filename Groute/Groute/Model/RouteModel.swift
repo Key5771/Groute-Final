@@ -17,7 +17,9 @@ struct Content {
     let imageAddress: String
     var favorite: Int?
 }
-
+struct routeName{
+    let name : String
+}
 struct Favorite {
     let email: String
 }
@@ -26,4 +28,5 @@ struct Comment {
     let email: String
     let content: String
     let timestamp: Date
+    let calcTime : String
 }

@@ -10,13 +10,14 @@ import UIKit
 import Firebase
 import Kingfisher
 
+
 class DetailTourViewController: UIViewController {
     @IBOutlet weak var locationImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet var addButton: UIButton!
-    
+
     let db = Firestore.firestore()
     
     var documentId: String = ""
@@ -27,7 +28,7 @@ class DetailTourViewController: UIViewController {
         getDetailTour()
         // Do any additional setup after loading the view.
     }
-    
+
     func getDetailTour() {
         db.collection("tour").document(documentId).getDocument { (snapshot, err) in
             if let err = err {
@@ -57,6 +58,12 @@ class DetailTourViewController: UIViewController {
         print("Add Button Click")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindToAddRoute" {
+            let viewController = segue.destination as! AddRouteViewController
+            viewController.dataPassed = nameLabel.text
+        }
+    }
     /*
     // MARK: - Navigation
 

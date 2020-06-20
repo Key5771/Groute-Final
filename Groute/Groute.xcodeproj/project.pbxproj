@@ -213,6 +213,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B512FFA124989EAF00156ADD /* SecondTab */ = {
+			isa = PBXGroup;
+			children = (
+				B50DA272246E83A400430811 /* SecondTabViewController.swift */,
+				EAB3410924815347009EAF80 /* SearchViewController.swift */,
+				EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */,
+				EA3ABE252486279100ACDFF3 /* RouteListViewController.swift */,
+				EA3ABE2924867EA400ACDFF3 /* DetailTourViewController.swift */,
+			);
+			path = SecondTab;
+			sourceTree = "<group>";
+		};
 		B563956C2494E9670069E2E6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,15 +266,11 @@
 		EA4440A6247D28C2002F5D10 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B563956E2494E9C80069E2E6 /* ThirdTab */,
 				B563956D2494E97E0069E2E6 /* FirstTab */,
+				B512FFA124989EAF00156ADD /* SecondTab */,
+				B563956E2494E9C80069E2E6 /* ThirdTab */,
 				B563956C2494E9670069E2E6 /* Login */,
-				B50DA272246E83A400430811 /* SecondTabViewController.swift */,
 				EAD7AD43243C3AC600B63AE7 /* MapViewController.swift */,
-				EAB3410924815347009EAF80 /* SearchViewController.swift */,
-				EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */,
-				EA3ABE252486279100ACDFF3 /* RouteListViewController.swift */,
-				EA3ABE2924867EA400ACDFF3 /* DetailTourViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

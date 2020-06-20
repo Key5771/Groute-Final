@@ -9,7 +9,10 @@
 import UIKit
 import Firebase
 
+
+
 class AddRouteViewController: UIViewController {
+    
     @IBOutlet weak var startTextField: UITextField!
     @IBOutlet weak var finishTextField: UITextField!
     @IBOutlet weak var pickerView: UIDatePicker!
@@ -19,12 +22,16 @@ class AddRouteViewController: UIViewController {
     @IBOutlet var startDate: UILabel!
     @IBOutlet var endDate: UILabel!
     @IBOutlet var hideView: UIView!
+    @IBOutlet var completeBtnView: UIView!
     
+    var dataPassed : String?
     var mapView: MTMapView?
     var cellCount: Int = 0
+    var currentSection : Int = 0
     var point: GeoPoint = GeoPoint(latitude: 0, longitude: 0)
     override func viewDidLoad() {
         super.viewDidLoad()
+        completeBtnView.isHidden = true
         confirmButtonView.isHidden = true
         confirmButtonView.isUserInteractionEnabled = false
         // Jeju National University Point
@@ -40,6 +47,10 @@ class AddRouteViewController: UIViewController {
 
 //        loadKakaoMap()
         
+    }
+    @IBAction func unwindToAddRouteVC(_ unwindSegue: UIStoryboardSegue){
+        print(dataPassed!)
+//        routeArry.append([dataPassed!])
     }
     func loadMapView() {
         let mapPoint: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: point.latitude, longitude: point.longitude))
@@ -58,13 +69,21 @@ class AddRouteViewController: UIViewController {
        print("touched")
         tableView.isHidden = false
         hideView.isHidden = false
+        completeBtnView.isHidden = false
         let firstDay = UserDefaults.standard.value(forKey: "firstDate") as! Date
         let lastDay = UserDefaults.standard.value(forKey: "lastDate") as! Date
         let result = lastDay.timeIntervalSince(firstDay)
         let days : Int = Int(result / 86399) + 1
         UserDefaults.standard.set(days, forKey: "days")
+        setDaysCellCount()
         tableView.reloadData()
         loadMapView()
+    }
+    func setDaysCellCount(){
+        let count = UserDefaults.standard.value(forKey: "days") as! Int
+        print(count)
+        
+        
     }
     @IBAction func selectStartDate(_ sender: Any) {
         pickerView.isHidden = false
@@ -150,54 +169,61 @@ class AddRouteViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    // MARK: - Day array
+    var dataList = [[String:String]]()
+    var day1 :[String] = ["장소추기"]
+    var day2 :[String] = ["장소추기"]
+    var day3 :[String] = ["장소추기"]
+    var day4 :[String] = ["장소추기"]
+    var day5 :[String] = ["장소추기"]
+    var day6 :[String] = ["장소추기"]
+    var day7 :[String] = ["장소추기"]
 }
 
 extension AddRouteViewController: UITableViewDataSource {
+    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         let sectionCount = UserDefaults.standard.value(forKey: "days") as? Int ?? 0
         return sectionCount
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-//        if section == 0 {
-//            return "Day 1"
-//        } else if section == 1 {
-//            return finishTextField.text
-//        } else if section == 2 {
-//            return "장소추가"
-//        }
-//
         return "day - \(section+1)"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            cellCount = 1
-//        } else if section == 1 {
-//            cellCount = 1
-//        } else if section == 2 {
-//            cellCount = 1
-//        }
-        return 1
+        if section == 0 {
+            cellCount = day1.count
+        } else if section == 1 {
+            cellCount = day2.count
+        } else if section == 2 {
+            cellCount = day3.count
+        } else if section == 3 {
+            cellCount = day4.count
+        }else if section == 4 {
+            cellCount = day5.count
+        }else if section == 5 {
+            cellCount = day6.count
+        }else if section == 6 {
+            cellCount = day7.count
+        } else {
+            cellCount = 1
+        }
+        return cellCount
+        
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "route", for: indexPath) as! AddRouteTableViewCell
-        
-        cell.addRouteButton.isHidden = false
-        
-//        if indexPath.section == 0 {
-//            cell.locationLabel.text = "제주대학교"
-//        } else if indexPath.section == 1 {
-//            cell.locationLabel.text = "제주시청"
-//        } else if indexPath.section == 2 {
-//            if cell.locationLabel.text == "" {
-//                cell.addRouteButton.isHidden = false
-//            }
+//        if indexPath.row == 0 {
+//            return cell
+//        } else {
+//            cell.addRouteButton.isHidden = false
+//            cell.locationLabel.text = routeArry[indexPath.section][indexPath.row]
+//            return cell
 //        }
-//
+        cell.addRouteButton.isHidden = false
         return cell
     }
     

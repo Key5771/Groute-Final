@@ -33,6 +33,8 @@ class SecondTabViewController: UIViewController {
         super.viewWillAppear(animated)
         
         getDocument()
+        
+        secondTableview.reloadData()
     }
     
     func getDocument() {

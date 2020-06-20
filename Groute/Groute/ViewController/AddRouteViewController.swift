@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class AddRouteViewController: UIViewController {
+    //MARK: - Outlet Variable
     @IBOutlet weak var startTextField: UITextField!
     @IBOutlet weak var finishTextField: UITextField!
     @IBOutlet weak var pickerView: UIDatePicker!
@@ -19,10 +20,15 @@ class AddRouteViewController: UIViewController {
     @IBOutlet var startDate: UILabel!
     @IBOutlet var endDate: UILabel!
     @IBOutlet var hideView: UIView!
+    @IBOutlet var saveButton: UIBarButtonItem!
     
+    //MARK: - Local Variable
     var mapView: MTMapView?
     var cellCount: Int = 0
     var point: GeoPoint = GeoPoint(latitude: 0, longitude: 0)
+    let db = Firestore.firestore()
+    
+    // MARK: - ViewController Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         confirmButtonView.isHidden = true
@@ -37,10 +43,11 @@ class AddRouteViewController: UIViewController {
         tableView.dataSource = self
         tableView.isHidden = true
         
-
-//        loadKakaoMap()
-        
+        if startTextField.text == "" || finishTextField.text == "" {
+            navigationItem.rightBarButtonItem = nil
+        }
     }
+    
     func loadMapView() {
         let mapPoint: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: point.latitude, longitude: point.longitude))
         // Jeju City Hall
@@ -48,9 +55,10 @@ class AddRouteViewController: UIViewController {
         innerView.backgroundColor = UIColor.gray
         innerView.addSubview(loadKakaoMap(point: mapPoint, point2: mapPoint2))
         
-        mapView?.addPOIItems(createMarker(point: mapPoint, point2: mapPoint2))
+        mapView?.addPOIItems(createMarker(point: mapPoint))
         mapView?.addPolyline(createPolyline(point: mapPoint, point2: mapPoint2))
     }
+    
     func setEnableConfirmButton(){
         confirmButtonView.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.calTime(_:)))
@@ -58,7 +66,6 @@ class AddRouteViewController: UIViewController {
     }
     
     @objc func calTime(_ sender:UITapGestureRecognizer){
-        print("touched")
         tableView.isHidden = false
         hideView.isHidden = false
         let firstDay = UserDefaults.standard.value(forKey: "firstDate") as! Date
@@ -69,10 +76,12 @@ class AddRouteViewController: UIViewController {
         tableView.reloadData()
         loadMapView()
     }
+    
     @IBAction func selectStartDate(_ sender: Any) {
         pickerView.isHidden = false
         createStartDatePicker()
     }
+    
     @IBAction func selectFinishDate(_ sender: Any) {
         pickerView.isHidden = false
         createFinishDatePicker()
@@ -125,24 +134,42 @@ class AddRouteViewController: UIViewController {
         UserDefaults.standard.set(pickerView.date, forKey: "lastDate")
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM월 dd일"
+        
         let selectedDate: String = dateFormatter.string(from: pickerView.date)
         confirmButtonView.isHidden = false
         setEnableConfirmButton()
         startDate.text = startTextField.text
         endDate.text = selectedDate
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        
         let showSelectedDate: String = dateFormatter.string(from: pickerView.date)
         finishTextField.text = showSelectedDate
         finishTextField.resignFirstResponder()
         pickerView.isHidden = true
         tableView.reloadData()
-        print(pickerView.date)
+        
+        navigationItem.rightBarButtonItem = saveButton
     }
     
     @objc func finishCancelClick() {
         finishTextField.resignFirstResponder()
     }
     
+    //MARK: - Save
+    @IBAction func saveClick(_ sender: Any) {
+        let alertController = UIAlertController(title: "저장", message: "저장하시겠습니까?", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: { _ in
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+        })
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alertController.addAction(cancelButton)
+        alertController.addAction(okButton)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation
@@ -172,19 +199,8 @@ extension AddRouteViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "route", for: indexPath) as! AddRouteTableViewCell
-        
         cell.addRouteButton.isHidden = false
-        
-//        if indexPath.section == 0 {
-//            cell.locationLabel.text = "제주대학교"
-//        } else if indexPath.section == 1 {
-//            cell.locationLabel.text = "제주시청"
-//        } else if indexPath.section == 2 {
-//            if cell.locationLabel.text == "" {
-//                cell.addRouteButton.isHidden = false
-//            }
-//        }
-//
+
         return cell
     }
     
@@ -199,31 +215,33 @@ extension AddRouteViewController: UITableViewDelegate {
 
 extension AddRouteViewController: MTMapViewDelegate {
     
-    func createMarker(point mapPoint: MTMapPoint, point2 mapPoint2: MTMapPoint) -> [MTMapPOIItem] {
+    func createMarker(point mapPoint: MTMapPoint) -> [MTMapPOIItem] {
         let positionItem = MTMapPOIItem()
-        positionItem.itemName = "제주대학교"
+        positionItem.itemName = "제주도청"
         positionItem.mapPoint = mapPoint
         positionItem.markerType = .customImage
-        if let path = Bundle.main.path(forResource: "map_pin_red", ofType: "png") {
-            positionItem.customImage = UIImage(contentsOfFile: path)
-        }
-//        positionItem.markerType = .bluePin
-//        positionItem.markerSelectedType = .bluePin
         positionItem.tag = 0
 
-        let positionItem2 = MTMapPOIItem()
-        positionItem2.itemName = "제주시청"
-        positionItem2.mapPoint = mapPoint2
-        positionItem2.markerType = .bluePin
-        positionItem2.markerSelectedType = .bluePin
-        positionItem2.tag = 1
+//        let positionItem2 = MTMapPOIItem()
+//        positionItem2.itemName = "제주시청"
+//        positionItem2.mapPoint = mapPoint2
+//        positionItem2.markerType = .customImage
+//        positionItem2.tag = 1
+        
+        if let path = Bundle.main.path(forResource: "map_pin_red", ofType: "png") {
+            positionItem.customImage = UIImage(contentsOfFile: path)
+//            positionItem2.customImage = UIImage(contentsOfFile: path)
+        }
 
-        return [positionItem, positionItem2]
+        return [positionItem]
     }
 
     func createPolyline(point mapPoint: MTMapPoint, point2 mapPoint2: MTMapPoint) -> MTMapPolyline {
         let polyLine = MTMapPolyline()
         polyLine.addPoints([mapPoint, mapPoint2])
+        polyLine.polylineColor = .red
+        
+        print("polyLine : \(String(describing: polyLine.mapPointList))")
 
         return polyLine
     }
@@ -240,7 +258,6 @@ extension AddRouteViewController: MTMapViewDelegate {
         mapView.setZoomLevel(4, animated: true)
         mapView.baseMapType = .standard
         mapView.showCurrentLocationMarker = true
-        print("Marker: \(mapView.showCurrentLocationMarker)")
         mapView.currentLocationTrackingMode = .onWithoutHeading
         
         

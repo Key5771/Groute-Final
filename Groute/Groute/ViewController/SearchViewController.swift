@@ -70,6 +70,7 @@ class SearchViewController: UIViewController {
 
 }
 
+// MARK: - Extension SearchBar
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
@@ -86,6 +87,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+//MARK: - Extension TableView
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchBar.text != "" {

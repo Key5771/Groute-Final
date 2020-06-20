@@ -288,10 +288,10 @@
                                 <rect key="frame" x="87" y="160" width="240" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zhU-aI-chJ">
-                                        <rect key="frame" x="10" y="10" width="90" height="20"/>
+                                        <rect key="frame" x="5" y="10" width="95" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="KkM-yQ-lIn"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="W00-Sy-b0U"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="95" id="W00-Sy-b0U"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -340,7 +340,7 @@
                                     <constraint firstItem="iar-To-dkN" firstAttribute="top" secondItem="hTx-bB-WQz" secondAttribute="top" constant="10" id="oMR-VP-7gu"/>
                                     <constraint firstAttribute="bottom" secondItem="iar-To-dkN" secondAttribute="bottom" constant="10" id="qOf-CJ-1Th"/>
                                     <constraint firstAttribute="bottom" secondItem="zhU-aI-chJ" secondAttribute="bottom" constant="10" id="wdB-px-eU8"/>
-                                    <constraint firstItem="zhU-aI-chJ" firstAttribute="leading" secondItem="hTx-bB-WQz" secondAttribute="leading" constant="10" id="xeh-Yr-0Qp"/>
+                                    <constraint firstItem="zhU-aI-chJ" firstAttribute="leading" secondItem="hTx-bB-WQz" secondAttribute="leading" constant="5" id="xeh-Yr-0Qp"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhK-Xj-go7">
@@ -377,7 +377,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OJ5-L2-2dP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8F0-Sg-xf8"/>
+                    <navigationItem key="navigationItem" id="8F0-Sg-xf8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="O7V-id-jMe">
+                            <connections>
+                                <action selector="saveClick:" destination="rbg-gX-aYV" id="dvB-P6-2Rd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="confirmButtonView" destination="hTx-bB-WQz" id="NrX-p4-LUT"/>
                         <outlet property="endDate" destination="iar-To-dkN" id="19Q-tW-uYk"/>
@@ -385,6 +391,7 @@
                         <outlet property="hideView" destination="rhK-Xj-go7" id="qSk-Gp-Ieo"/>
                         <outlet property="innerView" destination="moO-au-2Ec" id="L49-91-ReV"/>
                         <outlet property="pickerView" destination="e6r-nc-Snc" id="4Vc-1Y-xEu"/>
+                        <outlet property="saveButton" destination="O7V-id-jMe" id="KC3-55-cMa"/>
                         <outlet property="startDate" destination="zhU-aI-chJ" id="Kjb-xS-YUZ"/>
                         <outlet property="startTextField" destination="YqA-sI-HIW" id="7Nh-gF-iZq"/>
                         <outlet property="tableView" destination="B1y-Wx-Ftu" id="eZj-eB-sLC"/>

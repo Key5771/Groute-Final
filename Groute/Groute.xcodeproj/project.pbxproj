@@ -21,6 +21,7 @@
 		EA3ABE262486279100ACDFF3 /* RouteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE252486279100ACDFF3 /* RouteListViewController.swift */; };
 		EA3ABE28248627A000ACDFF3 /* RouteListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE27248627A000ACDFF3 /* RouteListTableViewCell.swift */; };
 		EA3ABE2A24867EA400ACDFF3 /* DetailTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE2924867EA400ACDFF3 /* DetailTourViewController.swift */; };
+		EA3ABE2B249DC43E00ACDFF3 /* map_pin_red.png in Resources */ = {isa = PBXBuildFile; fileRef = EAD7AD86243C452900B63AE7 /* map_pin_red.png */; };
 		EA4440A9247D335E002F5D10 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4440A8247D335E002F5D10 /* RouteModel.swift */; };
 		EA517EF124540D9D00F32E86 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA517EF024540D9D00F32E86 /* ViewController.swift */; };
 		EA54F51B24541BD500663333 /* TourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54F51A24541BD500663333 /* TourModel.swift */; };
@@ -532,6 +533,7 @@
 				EAD7AD4C243C3ACC00B63AE7 /* LaunchScreen.storyboard in Resources */,
 				EAD7ADB1243C728C00B63AE7 /* GoogleService-Info.plist in Resources */,
 				EAD7AD49243C3ACC00B63AE7 /* Assets.xcassets in Resources */,
+				EA3ABE2B249DC43E00ACDFF3 /* map_pin_red.png in Resources */,
 				EAD7AD47243C3AC600B63AE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

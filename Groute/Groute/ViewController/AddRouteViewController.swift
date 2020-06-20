@@ -47,15 +47,18 @@ class AddRouteViewController: UIViewController {
         let mapPoint2: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 33.499598, longitude:  126.531259))
         innerView.backgroundColor = UIColor.gray
         innerView.addSubview(loadKakaoMap(point: mapPoint, point2: mapPoint2))
+        
+        mapView?.addPOIItems(createMarker(point: mapPoint, point2: mapPoint2))
+        mapView?.addPolyline(createPolyline(point: mapPoint, point2: mapPoint2))
     }
     func setEnableConfirmButton(){
         confirmButtonView.isUserInteractionEnabled = true
-        let gesture = UITapGestureRecognizer(target: self, action: "calTime:")
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.calTime(_:)))
         self.confirmButtonView.addGestureRecognizer(gesture)
     }
     
     @objc func calTime(_ sender:UITapGestureRecognizer){
-       print("touched")
+        print("touched")
         tableView.isHidden = false
         hideView.isHidden = false
         let firstDay = UserDefaults.standard.value(forKey: "firstDate") as! Date
@@ -160,26 +163,10 @@ extension AddRouteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-//        if section == 0 {
-//            return "Day 1"
-//        } else if section == 1 {
-//            return finishTextField.text
-//        } else if section == 2 {
-//            return "장소추가"
-//        }
-//
         return "day - \(section+1)"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            cellCount = 1
-//        } else if section == 1 {
-//            cellCount = 1
-//        } else if section == 2 {
-//            cellCount = 1
-//        }
         return 1
     }
     
@@ -216,8 +203,12 @@ extension AddRouteViewController: MTMapViewDelegate {
         let positionItem = MTMapPOIItem()
         positionItem.itemName = "제주대학교"
         positionItem.mapPoint = mapPoint
-        positionItem.markerType = .bluePin
-        positionItem.markerSelectedType = .bluePin
+        positionItem.markerType = .customImage
+        if let path = Bundle.main.path(forResource: "map_pin_red", ofType: "png") {
+            positionItem.customImage = UIImage(contentsOfFile: path)
+        }
+//        positionItem.markerType = .bluePin
+//        positionItem.markerSelectedType = .bluePin
         positionItem.tag = 0
 
         let positionItem2 = MTMapPOIItem()
@@ -252,8 +243,6 @@ extension AddRouteViewController: MTMapViewDelegate {
         print("Marker: \(mapView.showCurrentLocationMarker)")
         mapView.currentLocationTrackingMode = .onWithoutHeading
         
-        mapView.addPOIItems(createMarker(point: mapPoint, point2: mapPoint2))
-        mapView.addPolyline(createPolyline(point: mapPoint, point2: mapPoint2))
         
         return mapView
     }

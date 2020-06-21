@@ -70,10 +70,10 @@ extension SecondTabViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "secondTabCell", for: indexPath) as! SecondTabTableViewCell
-            let url = URL(string: secondTabList[indexPath.row].imageAddress!)
-            cell.Time.text = secondTabList[indexPath.row].Time!
-            cell.addressName.text = secondTabList[indexPath.row].address!
-            cell.routeImage.kf.setImage(with: url)
+        let url = URL(string: secondTabList[indexPath.row].imageAddress!)
+        cell.Time.text = secondTabList[indexPath.row].Time!
+        cell.addressName.text = secondTabList[indexPath.row].address!
+        cell.routeImage.kf.setImage(with: url)
         cell.backgroundColor = UIColor.white
         cell.layer.borderColor = UIColor.white.cgColor
         return cell

@@ -16,9 +16,12 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     let db = Firestore.firestore()
+    let auth = Auth.auth()
     
     var cityName: [City] = []
     var filteredCityName: [City] = []
+    let stringLength: Int = 20
+    var createId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,25 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         
         getCityName()
+        createRouteDocument()
+    }
+    
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+    func createRouteDocument() {
+        createId = randomString(length: 20)
+        db.collection("Content").addDocument(data: [
+            "id": createId,
+            "email": auth.currentUser?.email ?? "",
+            "timestamp": Date(),
+            "title": "제주도에서 힐링을!",
+            "memo": "삶이 힘들 때, 제주도에서 여행을 해보는 것은 어떨까요?",
+            "imageAddress": "",
+            "location": ""
+        ])
     }
     
     func getCityName() {
@@ -38,7 +60,6 @@ class SearchViewController: UIViewController {
             } else {
                 for document in snapshot!.documents {
                     let city: City = City(cityName: document.get("cityName") as? String ?? "", cityEtc: document.get("cityEtc") as? String ?? "", cityImage: document.get("cityImage") as? String ?? "", point: document.get("geopoint") as? GeoPoint ?? GeoPoint(latitude: 0, longitude: 0) )
-                    print("city: \(city)")
                     
                     self.cityName.append(city)
                 }
@@ -58,10 +79,12 @@ class SearchViewController: UIViewController {
                 
                 if searchBar.text != "" {
                     vc?.point = filteredCityName[row.row].point
+                    vc?.location = filteredCityName[row.row].cityName
                 } else {
                     vc?.point = cityName[row.row].point
+                    vc?.location = cityName[row.row].cityName
                 }
-                
+                vc?.createDocumentId = self.createId
                 tableView.deselectRow(at: row, animated: true)
             }
         }

@@ -259,11 +259,11 @@
 				B563956D2494E97E0069E2E6 /* FirstTab */,
 				B563956C2494E9670069E2E6 /* Login */,
 				B50DA272246E83A400430811 /* SecondTabViewController.swift */,
-				EAD7AD43243C3AC600B63AE7 /* MapViewController.swift */,
 				EAB3410924815347009EAF80 /* SearchViewController.swift */,
 				EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */,
 				EA3ABE252486279100ACDFF3 /* RouteListViewController.swift */,
 				EA3ABE2924867EA400ACDFF3 /* DetailTourViewController.swift */,
+				EAD7AD43243C3AC600B63AE7 /* MapViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

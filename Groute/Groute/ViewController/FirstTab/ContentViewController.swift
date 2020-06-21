@@ -26,7 +26,7 @@ class ContentViewController: UIViewController {
         
     var contentId: String = ""
     
-    var content: [routeName] = []
+    var content: [RouteName] = []
     var review: [Comment] = []
     var like: [Favorite] = []
     let db = Firestore.firestore()
@@ -138,7 +138,7 @@ class ContentViewController: UIViewController {
                     self.content = []
                     for document in querySnapshot!.documents{
     //                    print("\(document.documentID) => \(document.data())")
-                        let getRouteName : routeName = routeName(name: document.documentID)
+                        let getRouteName : RouteName = RouteName(id: document.documentID, name: document.documentID)
                         self.content.append(getRouteName)
                         self.routeTableView.reloadData()
                         print(getRouteName)

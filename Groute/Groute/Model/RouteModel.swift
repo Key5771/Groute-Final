@@ -10,16 +10,20 @@ import Foundation
 
 struct Content {
     let id: String
+    var location: String
     let email: String
-    let title: String
-    let memo: String
+    var title: String
+    var memo: String
     let timestamp: Date
-    let imageAddress: String
+    var imageAddress: String
     var favorite: Int?
 }
-struct routeName{
+
+struct RouteName{
+    let id: String
     let name : String
 }
+
 struct Favorite {
     let email: String
 }

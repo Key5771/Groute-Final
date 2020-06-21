@@ -227,7 +227,7 @@
                                 <rect key="frame" x="0.0" y="219" width="414" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B1y-Wx-Ftu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="B1y-Wx-Ftu">
                                 <rect key="frame" x="0.0" y="527" width="414" height="335"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="KTH-jm-F9d">
@@ -249,12 +249,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-e7-k1r">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PF7-e7-k1r">
                                                     <rect key="frame" x="181" y="-4" width="52" height="30.5"/>
                                                     <state key="normal" title="장소추가"/>
-                                                    <connections>
-                                                        <segue destination="FNn-pm-24a" kind="show" id="KcV-cR-0Mj"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -269,6 +266,7 @@
                                         <connections>
                                             <outlet property="addRouteButton" destination="PF7-e7-k1r" id="jYh-Mi-yFv"/>
                                             <outlet property="locationLabel" destination="8Yo-Zc-FFo" id="gW0-JH-NfL"/>
+                                            <segue destination="FNn-pm-24a" kind="show" identifier="addRoute" id="caD-Yw-0mD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

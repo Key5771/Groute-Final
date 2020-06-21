@@ -26,7 +26,14 @@ class AddRouteViewController: UIViewController {
     var mapView: MTMapView?
     var cellCount: Int = 0
     var point: GeoPoint = GeoPoint(latitude: 0, longitude: 0)
+    var location: String = ""
+    var route: [RouteName] = []
+    var createDocumentId: String = ""
+    var newDocumentId: String = ""
+    
+    //MARK: - Firebase Constant
     let db = Firestore.firestore()
+    let auth = Auth.auth()
     
     // MARK: - ViewController Cycle
     override func viewDidLoad() {
@@ -35,7 +42,6 @@ class AddRouteViewController: UIViewController {
         confirmButtonView.isUserInteractionEnabled = false
         // Jeju National University Point
 
-        
         pickerView.isHidden = true
         hideView.isHidden = true
         self.hideView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
@@ -45,6 +51,52 @@ class AddRouteViewController: UIViewController {
         
         if startTextField.text == "" || finishTextField.text == "" {
             navigationItem.rightBarButtonItem = nil
+        }
+        
+        updateRouteDocument()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        gerRouteData(newDocumentId)
+    }
+    
+    func updateRouteDocument() {
+        db.collection("Content").whereField("id", isEqualTo: createDocumentId).getDocuments { (snapshot, err) in
+            if let err = err {
+                print("Error: \(err)")
+            } else {
+                for document in snapshot!.documents {
+                    var content: Content = Content(id: document.documentID,
+                                                   location: document.get("location") as? String ?? "",
+                                                   email: document.get("email") as? String ?? "",
+                                                   title: document.get("title") as? String ?? "",
+                                                   memo: document.get("memo") as? String ?? "",
+                                                   timestamp: (document.get("timestamp") as! Timestamp).dateValue(),
+                                                   imageAddress: document.get("imageAddress") as? String ?? "",
+                                                   favorite: document.get("favorite") as? Int ?? 0)
+                    
+                    content.location = self.location
+                    self.newDocumentId = content.id
+                }
+            }
+        }
+    }
+    
+    func gerRouteData(_ id: String) {
+        if route.isEmpty != true {
+            db.collection("Content").document(id).collection("Route").getDocuments { (snapshot, err) in
+                if let err = err {
+                    print("Error getting in Route : \(err)")
+                } else {
+                    for doc in snapshot!.documents {
+                        let route: RouteName = RouteName(id: doc.documentID,
+                                                         name: doc.get("name") as? String ?? "")
+                        
+                        self.route.append(route)
+                    }
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     
@@ -171,15 +223,20 @@ class AddRouteViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "addRoute" {
+            if let row = tableView.indexPathForSelectedRow {
+                let vc = segue.destination as? RouteListViewController
+                vc?.section = row.section
+                vc?.documentId = newDocumentId
+            }
+        }
     }
-    */
+    
 
 }
 
@@ -200,7 +257,13 @@ extension AddRouteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "route", for: indexPath) as! AddRouteTableViewCell
         cell.addRouteButton.isHidden = false
-
+        if route.isEmpty == true {
+            cell.locationLabel.text = ""
+        } else {
+            print("route collection : \(route[indexPath.row].name)")
+            cell.locationLabel.text = route[indexPath.row].name
+        }
+        
         return cell
     }
     

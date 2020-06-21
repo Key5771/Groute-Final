@@ -18,6 +18,8 @@ class RouteListViewController: UIViewController {
     
     var tourList: [TourModel] = []
     var filteredTourList: [TourModel] = []
+    var section: Int = 0
+    var documentId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class RouteListViewController: UIViewController {
                 self.tourList = []
                 
                 for document in snapshot!.documents {
-                    let tour: TourModel = TourModel(id: document.documentID,address: document.get("address") as? String ?? "", imageAddress: document.get("imageAddress") as? String ?? "", name: document.get("name") as? String ?? "", roadAddress: document.get("roadAddress") as? String ?? "")
+                    let tour: TourModel = TourModel(id: document.documentID, address: document.get("address") as? String ?? "", imageAddress: document.get("imageAddress") as? String ?? "", name: document.get("name") as? String ?? "", roadAddress: document.get("roadAddress") as? String ?? "", geoPoint: (document.get("geopoint") as? GeoPoint)!)
                     
                     self.tourList.append(tour)
                 }
@@ -58,10 +60,15 @@ class RouteListViewController: UIViewController {
             if let row = tableView.indexPathForSelectedRow {
                 let vc = segue.destination as? DetailTourViewController
                 if searchBar.text != "" {
-                    vc?.documentId = filteredTourList[row.row].id
+                    vc?.tourId = filteredTourList[row.row].id
                 } else {
-                    vc?.documentId = tourList[row.row].id
+                    vc?.tourId = tourList[row.row].id
                 }
+                
+                vc?.section = section
+                vc?.documentId = documentId
+                
+                
                 tableView.deselectRow(at: row, animated: true)
             }
         }

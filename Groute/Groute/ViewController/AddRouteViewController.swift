@@ -28,8 +28,19 @@ class AddRouteViewController: UIViewController {
     var point: GeoPoint = GeoPoint(latitude: 0, longitude: 0)
     var location: String = ""
     var route: [RouteName] = []
+    var setRoute: [RouteName] = []
     var createDocumentId: String = ""
     var newDocumentId: String = ""
+    
+    var tmp0: [RouteName] = []
+    var tmp1: [RouteName] = []
+    var tmp2: [RouteName] = []
+    var tmp3: [RouteName] = []
+    
+    var section0: [RouteName] = []
+    var section1: [RouteName] = []
+    var section2: [RouteName] = []
+    var section3: [RouteName] = []
     
     //MARK: - Firebase Constant
     let db = Firestore.firestore()
@@ -52,12 +63,27 @@ class AddRouteViewController: UIViewController {
         if startTextField.text == "" || finishTextField.text == "" {
             navigationItem.rightBarButtonItem = nil
         }
-        
-        updateRouteDocument()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        gerRouteData(newDocumentId)
+        updateRouteDocument()
+        print("viewWillAppear section0 count: \(section0.count)")
+        print("viewWillAppear section1 count: \(section1.count)")
+        print("viewWillAppear section2 count: \(section2.count)")
+        print("viewWillAppear section3 count: \(section3.count)")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getRouteData(newDocumentId)
+//        updateMapView()
+        
+        if section0.isEmpty != true {
+            loadMapView(latitude: section0[0].point.latitude, longitude: section0[0].point.longitude)
+        }
+        
+        if section1.isEmpty != true {
+            loadMapView(latitude: section1[0].point.latitude, longitude: section1[0].point.longitude)
+        }
     }
     
     func updateRouteDocument() {
@@ -82,26 +108,68 @@ class AddRouteViewController: UIViewController {
         }
     }
     
-    func gerRouteData(_ id: String) {
-        if route.isEmpty != true {
-            db.collection("Content").document(id).collection("Route").getDocuments { (snapshot, err) in
-                if let err = err {
-                    print("Error getting in Route : \(err)")
-                } else {
-                    for doc in snapshot!.documents {
-                        let route: RouteName = RouteName(id: doc.documentID,
-                                                         name: doc.get("name") as? String ?? "")
-                        
-                        self.route.append(route)
+    func getRouteData(_ id: String) {
+        db.collection("Content").document(id).collection("Route").addSnapshotListener { (snapshot, err) in
+            if let err = err {
+                print("Error getting in Route : \(err)")
+            } else {
+                for doc in snapshot!.documents {
+                    let route: RouteName = RouteName(id: doc.documentID,
+                                                     name: doc.get("name") as? String ?? "",
+                                                     section: doc.get("section") as? Int ?? 0,
+                                                     point: (doc.get("geopoint") as? GeoPoint)!)
+                    
+//                    self.route.append(route)
+//                    print("!!!!!!!!!!!!!!!!!!!: \(route)")
+                    
+                    if route.section == 0 {
+                        self.tmp0.append(route)
+                        self.section0 = Array(Set(self.tmp0))
+                    } else if route.section == 1 {
+                        self.tmp1.append(route)
+                        self.section1 = Array(Set(self.tmp1))
+                    } else if route.section == 2 {
+                        self.tmp2.append(route)
+                        self.section2 = Array(Set(self.tmp2))
+                    } else if route.section == 3 {
+                        self.tmp3.append(route)
+                        self.section3 = Array(Set(self.tmp3))
                     }
-                    self.tableView.reloadData()
                 }
+//                self.setRoute = Array(Set(self.route))
+                self.tableView.reloadData()
             }
         }
     }
     
-    func loadMapView() {
-        let mapPoint: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: point.latitude, longitude: point.longitude))
+    func updateMapView() {
+        if section0.isEmpty != true {
+            for i in 0..<section0.count {
+                loadMapView(latitude: section0[i].point.latitude, longitude: section0[i].point.latitude)
+            }
+        }
+        
+        if section1.isEmpty != true {
+            for i in 0..<section1.count {
+                loadMapView(latitude: section1[i].point.latitude, longitude: section1[i].point.latitude)
+            }
+        }
+        
+        if section2.isEmpty != true {
+            for i in 0..<section2.count {
+                loadMapView(latitude: section2[i].point.latitude, longitude: section2[i].point.latitude)
+            }
+        }
+        
+        if section3.isEmpty != true {
+            for i in 0..<section3.count {
+                loadMapView(latitude: section3[i].point.latitude, longitude: section3[i].point.latitude)
+            }
+        }
+    }
+    
+    func loadMapView(latitude x: Double, longitude y: Double) {
+        let mapPoint: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: x, longitude: y))
         // Jeju City Hall
         let mapPoint2: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 33.499598, longitude:  126.531259))
         innerView.backgroundColor = UIColor.gray
@@ -126,7 +194,7 @@ class AddRouteViewController: UIViewController {
         let days : Int = Int(result / 86399) + 1
         UserDefaults.standard.set(days, forKey: "days")
         tableView.reloadData()
-        loadMapView()
+        loadMapView(latitude: point.latitude, longitude: point.longitude)
     }
     
     @IBAction func selectStartDate(_ sender: Any) {
@@ -251,17 +319,81 @@ extension AddRouteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+//        if setRoute.isEmpty == true {
+//            return 1
+//        } else {
+//            return setRoute.count
+//        }
+        
+        if section == 0 {
+            if section0.isEmpty == true {
+                return 1
+            } else {
+                return section0.count
+            }
+        } else if section == 1 {
+            if section1.isEmpty == true {
+                return 1
+            } else {
+                return section1.count
+            }
+        } else if section == 2 {
+            if section2.isEmpty == true {
+                return 1
+            } else {
+                return section2.count
+            }
+        } else if section == 3 {
+            if section3.isEmpty == true {
+                return 1
+            } else {
+                return section3.count
+            }
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "route", for: indexPath) as! AddRouteTableViewCell
         cell.addRouteButton.isHidden = false
-        if route.isEmpty == true {
+//        if setRoute.isEmpty == true {
+//            cell.locationLabel.text = ""
+//        } else {
+//            if setRoute[indexPath.row].section == indexPath.section {
+//                print("route Section: \(setRoute[indexPath.row].section)")
+//                print("selectSection: \(indexPath.section)")
+//                cell.locationLabel.text = setRoute[indexPath.row].name
+//            }
+//        }
+        
+        switch indexPath.section {
+        case 0:
+            if section0.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section0[indexPath.row].name
+            }
+        case 1:
+            if section1.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section1[indexPath.row].name
+            }
+        case 2:
+            if section2.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section2[indexPath.row].name
+            }
+        case 3:
+            if section3.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section3[indexPath.row].name
+            }
+        default:
             cell.locationLabel.text = ""
-        } else {
-            print("route collection : \(route[indexPath.row].name)")
-            cell.locationLabel.text = route[indexPath.row].name
         }
         
         return cell
@@ -318,7 +450,7 @@ extension AddRouteViewController: MTMapViewDelegate {
         // Center Point
         mapView.setMapCenter(mapPoint, animated: true)
         // Zoom To
-        mapView.setZoomLevel(4, animated: true)
+        mapView.setZoomLevel(5, animated: true)
         mapView.baseMapType = .standard
         mapView.showCurrentLocationMarker = true
         mapView.currentLocationTrackingMode = .onWithoutHeading

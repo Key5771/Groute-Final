@@ -25,6 +25,7 @@ struct RouteName: Hashable {
     let name : String
     let section: Int
     let point: GeoPoint
+    let imageAddress: String
 }
 
 struct Favorite {

@@ -129,26 +129,28 @@ class ContentViewController: UIViewController {
     }
     //MARK: - Get data function
 
-        func getRoute(){
-            db.collection("Content").document(contentId).collection("Route").getDocuments() {
-                (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting Documents: \(err)")
-                } else {
-                    self.content = []
-                    for document in querySnapshot!.documents{
-    //                    print("\(document.documentID) => \(document.data())")
-                        let getRouteName : RouteName = RouteName(id: document.documentID,
-                                                                 name: document.documentID,
-                                                                 section: document.get("section") as? Int ?? 0,
-                                                                 point: (document.get("geopoint") as? GeoPoint)!)
-                        self.content.append(getRouteName)
-                        self.routeTableView.reloadData()
-                        print(getRouteName)
-                    }
+    func getRoute(){
+        db.collection("Content").document(contentId).collection("Route").getDocuments() {
+            (querySnapshot, err) in
+            if let err = err {
+                print("Error getting Documents: \(err)")
+            } else {
+                self.content = []
+                for document in querySnapshot!.documents{
+                    //                    print("\(document.documentID) => \(document.data())")
+                    let getRouteName : RouteName = RouteName(id: document.documentID,
+                                                             name: document.documentID,
+                                                             section: document.get("section") as? Int ?? 0,
+                                                             point: (document.get("geopoint") as? GeoPoint) ?? GeoPoint(latitude: 0.0, longitude: 0.0),
+                                                             imageAddress: document.get("imageAddress") as? String ?? "")
+                    self.content.append(getRouteName)
+                    self.routeTableView.reloadData()
+                    print(getRouteName)
                 }
             }
         }
+    }
+    
     func getReview(){
         db.collection("Content").document(contentId).collection("Comment").getDocuments{ (querySnapshot, err) in
             if let err = err {

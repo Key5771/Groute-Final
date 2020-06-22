@@ -36,11 +36,13 @@ class AddRouteViewController: UIViewController {
     var tmp1: [RouteName] = []
     var tmp2: [RouteName] = []
     var tmp3: [RouteName] = []
+    var tmp4: [RouteName] = []
     
     var section0: [RouteName] = []
     var section1: [RouteName] = []
     var section2: [RouteName] = []
     var section3: [RouteName] = []
+    var section4: [RouteName] = []
     
     //MARK: - Firebase Constant
     let db = Firestore.firestore()
@@ -67,10 +69,6 @@ class AddRouteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         updateRouteDocument()
-        print("viewWillAppear section0 count: \(section0.count)")
-        print("viewWillAppear section1 count: \(section1.count)")
-        print("viewWillAppear section2 count: \(section2.count)")
-        print("viewWillAppear section3 count: \(section3.count)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,11 +76,30 @@ class AddRouteViewController: UIViewController {
 //        updateMapView()
         
         if section0.isEmpty != true {
-            loadMapView(latitude: section0[0].point.latitude, longitude: section0[0].point.longitude)
+            if section0.count == 1 {
+                loadMapView(latitude: section0[0].point.latitude, longitude: section0[0].point.longitude)
+            } else if section0.count == 2 {
+                loadMapView(latitude: section0[0].point.latitude, longitude: section0[0].point.longitude)
+                loadMapView(latitude: section0[1].point.latitude, longitude: section0[1].point.longitude)
+            }
         }
         
         if section1.isEmpty != true {
-            loadMapView(latitude: section1[0].point.latitude, longitude: section1[0].point.longitude)
+            if section1.count == 1 {
+                loadMapView(latitude: section1[0].point.latitude, longitude: section1[0].point.longitude)
+            } else if section1.count == 2 {
+                loadMapView(latitude: section1[0].point.latitude, longitude: section1[0].point.longitude)
+                loadMapView(latitude: section1[1].point.latitude, longitude: section1[1].point.longitude)
+            }
+        }
+        
+        if section2.isEmpty != true {
+            if section2.count == 1 {
+                loadMapView(latitude: section2[0].point.latitude, longitude: section2[0].point.longitude)
+            } else if section2.count == 2 {
+                loadMapView(latitude: section2[0].point.latitude, longitude: section2[0].point.longitude)
+                loadMapView(latitude: section2[1].point.latitude, longitude: section2[1].point.longitude)
+            }
         }
     }
     
@@ -92,7 +109,7 @@ class AddRouteViewController: UIViewController {
                 print("Error: \(err)")
             } else {
                 for document in snapshot!.documents {
-                    var content: Content = Content(id: document.documentID,
+                    let content: Content = Content(id: document.documentID,
                                                    location: document.get("location") as? String ?? "",
                                                    email: document.get("email") as? String ?? "",
                                                    title: document.get("title") as? String ?? "",
@@ -101,7 +118,6 @@ class AddRouteViewController: UIViewController {
                                                    imageAddress: document.get("imageAddress") as? String ?? "",
                                                    favorite: document.get("favorite") as? Int ?? 0)
                     
-                    content.location = self.location
                     self.newDocumentId = content.id
                 }
             }
@@ -117,10 +133,8 @@ class AddRouteViewController: UIViewController {
                     let route: RouteName = RouteName(id: doc.documentID,
                                                      name: doc.get("name") as? String ?? "",
                                                      section: doc.get("section") as? Int ?? 0,
-                                                     point: (doc.get("geopoint") as? GeoPoint)!)
-                    
-//                    self.route.append(route)
-//                    print("!!!!!!!!!!!!!!!!!!!: \(route)")
+                                                     point: (doc.get("geopoint") as? GeoPoint)!,
+                                                     imageAddress: doc.get("imageAddress") as? String ?? "")
                     
                     if route.section == 0 {
                         self.tmp0.append(route)
@@ -134,9 +148,11 @@ class AddRouteViewController: UIViewController {
                     } else if route.section == 3 {
                         self.tmp3.append(route)
                         self.section3 = Array(Set(self.tmp3))
+                    } else if route.section == 4 {
+                        self.tmp4.append(route)
+                        self.section4 = Array(Set(self.tmp4))
                     }
                 }
-//                self.setRoute = Array(Set(self.route))
                 self.tableView.reloadData()
             }
         }
@@ -175,7 +191,11 @@ class AddRouteViewController: UIViewController {
         innerView.backgroundColor = UIColor.gray
         innerView.addSubview(loadKakaoMap(point: mapPoint, point2: mapPoint2))
         
+        // marker
         mapView?.addPOIItems(createMarker(point: mapPoint))
+        mapView?.fitAreaToShowAllPOIItems()
+        
+        // polyline
         mapView?.addPolyline(createPolyline(point: mapPoint, point2: mapPoint2))
     }
     
@@ -281,7 +301,7 @@ class AddRouteViewController: UIViewController {
         
         let okButton = UIAlertAction(title: "확인", style: .default, handler: { _ in
             let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
-            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
         })
         let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
@@ -301,6 +321,12 @@ class AddRouteViewController: UIViewController {
                 let vc = segue.destination as? RouteListViewController
                 vc?.section = row.section
                 vc?.documentId = newDocumentId
+                vc?.location = self.location
+                vc?.email = auth.currentUser?.email ?? ""
+                
+                if section0.isEmpty != true {
+                    vc?.mainImageAddress = section0[0].imageAddress
+                }
             }
         }
     }
@@ -319,12 +345,6 @@ extension AddRouteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if setRoute.isEmpty == true {
-//            return 1
-//        } else {
-//            return setRoute.count
-//        }
-        
         if section == 0 {
             if section0.isEmpty == true {
                 return 1
@@ -349,6 +369,12 @@ extension AddRouteViewController: UITableViewDataSource {
             } else {
                 return section3.count
             }
+        } else if section == 4 {
+            if section4.isEmpty == true {
+                return 1
+            } else {
+                return section4.count
+            }
         } else {
             return 1
         }
@@ -357,15 +383,6 @@ extension AddRouteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "route", for: indexPath) as! AddRouteTableViewCell
         cell.addRouteButton.isHidden = false
-//        if setRoute.isEmpty == true {
-//            cell.locationLabel.text = ""
-//        } else {
-//            if setRoute[indexPath.row].section == indexPath.section {
-//                print("route Section: \(setRoute[indexPath.row].section)")
-//                print("selectSection: \(indexPath.section)")
-//                cell.locationLabel.text = setRoute[indexPath.row].name
-//            }
-//        }
         
         switch indexPath.section {
         case 0:
@@ -392,6 +409,12 @@ extension AddRouteViewController: UITableViewDataSource {
             } else {
                 cell.locationLabel.text = section3[indexPath.row].name
             }
+        case 4:
+            if section4.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section4[indexPath.row].name
+            }
         default:
             cell.locationLabel.text = ""
         }
@@ -416,16 +439,9 @@ extension AddRouteViewController: MTMapViewDelegate {
         positionItem.mapPoint = mapPoint
         positionItem.markerType = .customImage
         positionItem.tag = 0
-
-//        let positionItem2 = MTMapPOIItem()
-//        positionItem2.itemName = "제주시청"
-//        positionItem2.mapPoint = mapPoint2
-//        positionItem2.markerType = .customImage
-//        positionItem2.tag = 1
         
         if let path = Bundle.main.path(forResource: "map_pin_red", ofType: "png") {
             positionItem.customImage = UIImage(contentsOfFile: path)
-//            positionItem2.customImage = UIImage(contentsOfFile: path)
         }
 
         return [positionItem]

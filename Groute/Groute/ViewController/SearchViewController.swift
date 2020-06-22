@@ -22,6 +22,9 @@ class SearchViewController: UIViewController {
     var filteredCityName: [City] = []
     let stringLength: Int = 20
     var createId: String = ""
+    var contentTitle: String = ""
+    var contentMemo: String = ""
+    var id: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +35,27 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         
         getCityName()
-        createRouteDocument()
+        
+        getRealDocumentId()
     }
     
-    func randomString(length: Int) -> String {
-      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
+    override func viewDidAppear(_ animated: Bool) {
+        updateTitle()
     }
     
-    func createRouteDocument() {
-        createId = randomString(length: 20)
-        db.collection("Content").addDocument(data: [
-            "id": createId,
-            "email": auth.currentUser?.email ?? "",
-            "timestamp": Date(),
-            "title": "제주도에서 힐링을!",
-            "memo": "삶이 힘들 때, 제주도에서 여행을 해보는 것은 어떨까요?",
-            "imageAddress": "",
-            "location": ""
+    func getRealDocumentId() {
+        db.collection("Content").whereField("id", isEqualTo: createId).addSnapshotListener { (snapshot, err) in
+            for document in snapshot!.documents {
+                self.id = document.documentID
+            }
+        }
+    }
+    
+    func updateTitle() {
+        print("id: \(id)")
+        db.collection("Content").document(id).updateData([
+            "title": contentTitle,
+            "memo": contentMemo
         ])
     }
     

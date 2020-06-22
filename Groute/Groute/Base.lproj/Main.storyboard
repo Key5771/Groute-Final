@@ -41,7 +41,7 @@
                                             </constraints>
                                             <state key="normal" image="addRouteImage"/>
                                             <connections>
-                                                <segue destination="Q55-6V-l0X" kind="show" id="NAd-sY-Rba"/>
+                                                <segue destination="Yik-x3-3Vf" kind="show" id="aVu-ZA-JZK"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -199,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MbM-cY-BOU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656.52173913043487" y="79.6875"/>
+            <point key="canvasLocation" x="1438" y="80"/>
         </scene>
         <!--Add Route View Controller-->
         <scene sceneID="xVi-3A-y7t">
@@ -397,7 +397,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ShC-qp-EKI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1385.5072463768117" y="79.6875"/>
+            <point key="canvasLocation" x="2201" y="80"/>
         </scene>
         <!--Route List View Controller-->
         <scene sceneID="veH-V5-jtM">
@@ -483,7 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuW-8d-BDh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2192.753623188406" y="79.6875"/>
+            <point key="canvasLocation" x="2965" y="80"/>
         </scene>
         <!--Detail Tour View Controller-->
         <scene sceneID="mwd-er-7vm">
@@ -560,7 +560,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vyb-kt-4r1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3000" y="80"/>
+            <point key="canvasLocation" x="3745" y="80"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="Nt1-aG-aas">
@@ -1416,6 +1416,73 @@
             </objects>
             <point key="canvasLocation" x="1082.608695652174" y="-761.38392857142856"/>
         </scene>
+        <!--Title View Controller-->
+        <scene sceneID="C1q-mh-21l">
+            <objects>
+                <viewController id="Yik-x3-3Vf" customClass="TitleViewController" customModule="Groute" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="klS-L8-Xwz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXS-IU-YGd">
+                                <rect key="frame" x="20" y="118" width="374" height="36"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oTE-KH-nG3">
+                                <rect key="frame" x="20" y="174" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4F0-Cq-TfH">
+                                <rect key="frame" x="20" y="258" width="374" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SCl-UK-Wpe">
+                                <rect key="frame" x="20" y="324" width="374" height="238"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6l9-zi-aUw" firstAttribute="trailing" secondItem="oTE-KH-nG3" secondAttribute="trailing" constant="20" id="8pJ-C1-qiO"/>
+                            <constraint firstItem="6l9-zi-aUw" firstAttribute="trailing" secondItem="4F0-Cq-TfH" secondAttribute="trailing" constant="20" id="F8e-Ri-WDI"/>
+                            <constraint firstItem="oTE-KH-nG3" firstAttribute="leading" secondItem="6l9-zi-aUw" secondAttribute="leading" constant="20" id="GWm-1G-gJi"/>
+                            <constraint firstItem="oXS-IU-YGd" firstAttribute="leading" secondItem="6l9-zi-aUw" secondAttribute="leading" constant="20" id="RLf-om-qmM"/>
+                            <constraint firstItem="oTE-KH-nG3" firstAttribute="top" secondItem="oXS-IU-YGd" secondAttribute="bottom" constant="20" id="T2a-Qv-ReW"/>
+                            <constraint firstItem="SCl-UK-Wpe" firstAttribute="top" secondItem="4F0-Cq-TfH" secondAttribute="bottom" constant="30" id="X2Q-RA-Gsm"/>
+                            <constraint firstItem="4F0-Cq-TfH" firstAttribute="top" secondItem="oTE-KH-nG3" secondAttribute="bottom" constant="50" id="YYf-zS-FLv"/>
+                            <constraint firstItem="6l9-zi-aUw" firstAttribute="trailing" secondItem="oXS-IU-YGd" secondAttribute="trailing" constant="20" id="dDR-tc-k3g"/>
+                            <constraint firstItem="6l9-zi-aUw" firstAttribute="trailing" secondItem="SCl-UK-Wpe" secondAttribute="trailing" constant="20" id="fYG-24-bag"/>
+                            <constraint firstItem="oXS-IU-YGd" firstAttribute="top" secondItem="6l9-zi-aUw" secondAttribute="top" constant="30" id="gDa-yl-22w"/>
+                            <constraint firstItem="6l9-zi-aUw" firstAttribute="bottom" secondItem="SCl-UK-Wpe" secondAttribute="bottom" constant="300" id="iCj-Ll-KVA"/>
+                            <constraint firstItem="4F0-Cq-TfH" firstAttribute="leading" secondItem="6l9-zi-aUw" secondAttribute="leading" constant="20" id="v45-1j-OPt"/>
+                            <constraint firstItem="SCl-UK-Wpe" firstAttribute="leading" secondItem="6l9-zi-aUw" secondAttribute="leading" constant="20" id="wrz-ss-WxE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6l9-zi-aUw"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GOb-jJ-4nV">
+                        <barButtonItem key="rightBarButtonItem" title="다음" id="mj3-ZS-6jW">
+                            <connections>
+                                <segue destination="Q55-6V-l0X" kind="show" identifier="title" id="xzq-dz-KjN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="memoTextView" destination="SCl-UK-Wpe" id="hFd-VE-xV0"/>
+                        <outlet property="titleTextField" destination="oTE-KH-nG3" id="q6j-tL-GN9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6s1-a7-0iT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="680" y="80"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -1430,7 +1497,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4239" y="80"/>
+            <point key="canvasLocation" x="4328" y="-803"/>
         </scene>
     </scenes>
     <resources>

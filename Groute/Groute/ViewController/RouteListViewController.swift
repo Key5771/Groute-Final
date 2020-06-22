@@ -15,11 +15,15 @@ class RouteListViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     let db = Firestore.firestore()
+    let auth = Auth.auth()
     
     var tourList: [TourModel] = []
     var filteredTourList: [TourModel] = []
     var section: Int = 0
     var documentId: String = ""
+    var location: String = ""
+    var mainImageAddress: String = ""
+    var email: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +34,7 @@ class RouteListViewController: UIViewController {
         searchBar.delegate = self
         
         getList()
+        changeContentField()
     }
     
     func getList() {
@@ -53,6 +58,14 @@ class RouteListViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    func changeContentField() {
+        db.collection("Content").document(documentId).updateData([
+            "email": self.email,
+            "location": self.location,
+            "imageAddress": self.mainImageAddress
+        ])
     }
     
 

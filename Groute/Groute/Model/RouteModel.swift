@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Content {
     let id: String
@@ -19,9 +20,11 @@ struct Content {
     var favorite: Int?
 }
 
-struct RouteName{
+struct RouteName: Hashable {
     let id: String
     let name : String
+    let section: Int
+    let point: GeoPoint
 }
 
 struct Favorite {

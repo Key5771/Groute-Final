@@ -138,7 +138,10 @@ class ContentViewController: UIViewController {
                     self.content = []
                     for document in querySnapshot!.documents{
     //                    print("\(document.documentID) => \(document.data())")
-                        let getRouteName : RouteName = RouteName(id: document.documentID, name: document.documentID)
+                        let getRouteName : RouteName = RouteName(id: document.documentID,
+                                                                 name: document.documentID,
+                                                                 section: document.get("section") as? Int ?? 0,
+                                                                 point: (document.get("geopoint") as? GeoPoint)!)
                         self.content.append(getRouteName)
                         self.routeTableView.reloadData()
                         print(getRouteName)

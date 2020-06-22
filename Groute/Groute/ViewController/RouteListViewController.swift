@@ -40,7 +40,12 @@ class RouteListViewController: UIViewController {
                 self.tourList = []
                 
                 for document in snapshot!.documents {
-                    let tour: TourModel = TourModel(id: document.documentID, address: document.get("address") as? String ?? "", imageAddress: document.get("imageAddress") as? String ?? "", name: document.get("name") as? String ?? "", roadAddress: document.get("roadAddress") as? String ?? "", geoPoint: (document.get("geopoint") as? GeoPoint)!)
+                    let tour: TourModel = TourModel(id: document.documentID,
+                                                    address: document.get("address") as? String ?? "",
+                                                    imageAddress: document.get("imageAddress") as? String ?? "",
+                                                    name: document.get("name") as? String ?? "",
+                                                    roadAddress: document.get("roadAddress") as? String ?? "",
+                                                    geoPoint: (document.get("geopoint") as? GeoPoint)!)
                     
                     self.tourList.append(tour)
                 }

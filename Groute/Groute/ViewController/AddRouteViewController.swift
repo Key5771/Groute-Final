@@ -303,7 +303,28 @@ class AddRouteViewController: UIViewController {
             let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
             self.navigationController?.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
         })
-        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { _ in
+            self.db.collection("Content").document(self.newDocumentId).collection("Route").getDocuments { (snapshot, err) in
+                snapshot?.documents.forEach { $0.reference.delete() }
+            }
+            
+            self.db.collection("Content").document(self.newDocumentId).collection("Favorite").getDocuments { (snapshot, err) in
+                snapshot?.documents.forEach { $0.reference.delete() }
+            }
+            
+            self.db.collection("Content").document(self.newDocumentId).collection("Comment").getDocuments { (snapshot, err) in
+                snapshot?.documents.forEach { $0.reference.delete() }
+            }
+            
+            self.db.collection("Content").document(self.newDocumentId).delete(completion: { (err) in
+                if let err = err {
+                    print("Error getting Delete Document : \(err)")
+                }
+            })
+            
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
+        })
         
         alertController.addAction(cancelButton)
         alertController.addAction(okButton)

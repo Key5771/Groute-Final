@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class AddRouteViewController: UIViewController {
+    //MARK: - Outlet Variable
     @IBOutlet weak var startTextField: UITextField!
     @IBOutlet weak var finishTextField: UITextField!
     @IBOutlet weak var pickerView: UIDatePicker!
@@ -19,17 +20,41 @@ class AddRouteViewController: UIViewController {
     @IBOutlet var startDate: UILabel!
     @IBOutlet var endDate: UILabel!
     @IBOutlet var hideView: UIView!
+    @IBOutlet var saveButton: UIBarButtonItem!
     
+    //MARK: - Local Variable
     var mapView: MTMapView?
     var cellCount: Int = 0
     var point: GeoPoint = GeoPoint(latitude: 0, longitude: 0)
+    var location: String = ""
+    var route: [RouteName] = []
+    var setRoute: [RouteName] = []
+    var createDocumentId: String = ""
+    var newDocumentId: String = ""
+    
+    var tmp0: [RouteName] = []
+    var tmp1: [RouteName] = []
+    var tmp2: [RouteName] = []
+    var tmp3: [RouteName] = []
+    var tmp4: [RouteName] = []
+    
+    var section0: [RouteName] = []
+    var section1: [RouteName] = []
+    var section2: [RouteName] = []
+    var section3: [RouteName] = []
+    var section4: [RouteName] = []
+    
+    //MARK: - Firebase Constant
+    let db = Firestore.firestore()
+    let auth = Auth.auth()
+    
+    // MARK: - ViewController Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         confirmButtonView.isHidden = true
         confirmButtonView.isUserInteractionEnabled = false
         // Jeju National University Point
 
-        
         pickerView.isHidden = true
         hideView.isHidden = true
         self.hideView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
@@ -37,20 +62,143 @@ class AddRouteViewController: UIViewController {
         tableView.dataSource = self
         tableView.isHidden = true
         
-
-//        loadKakaoMap()
-        
+        if startTextField.text == "" || finishTextField.text == "" {
+            navigationItem.rightBarButtonItem = nil
+        }
     }
-    func loadMapView() {
-        let mapPoint: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: point.latitude, longitude: point.longitude))
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateRouteDocument()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getRouteData(newDocumentId)
+//        updateMapView()
+        
+        if section0.isEmpty != true {
+            if section0.count == 1 {
+                loadMapView(latitude: section0[0].point.latitude, longitude: section0[0].point.longitude)
+            } else if section0.count == 2 {
+                loadMapView(latitude: section0[0].point.latitude, longitude: section0[0].point.longitude)
+                loadMapView(latitude: section0[1].point.latitude, longitude: section0[1].point.longitude)
+            }
+        }
+        
+        if section1.isEmpty != true {
+            if section1.count == 1 {
+                loadMapView(latitude: section1[0].point.latitude, longitude: section1[0].point.longitude)
+            } else if section1.count == 2 {
+                loadMapView(latitude: section1[0].point.latitude, longitude: section1[0].point.longitude)
+                loadMapView(latitude: section1[1].point.latitude, longitude: section1[1].point.longitude)
+            }
+        }
+        
+        if section2.isEmpty != true {
+            if section2.count == 1 {
+                loadMapView(latitude: section2[0].point.latitude, longitude: section2[0].point.longitude)
+            } else if section2.count == 2 {
+                loadMapView(latitude: section2[0].point.latitude, longitude: section2[0].point.longitude)
+                loadMapView(latitude: section2[1].point.latitude, longitude: section2[1].point.longitude)
+            }
+        }
+    }
+    
+    func updateRouteDocument() {
+        db.collection("Content").whereField("id", isEqualTo: createDocumentId).getDocuments { (snapshot, err) in
+            if let err = err {
+                print("Error: \(err)")
+            } else {
+                for document in snapshot!.documents {
+                    let content: Content = Content(id: document.documentID,
+                                                   location: document.get("location") as? String ?? "",
+                                                   email: document.get("email") as? String ?? "",
+                                                   title: document.get("title") as? String ?? "",
+                                                   memo: document.get("memo") as? String ?? "",
+                                                   timestamp: (document.get("timestamp") as! Timestamp).dateValue(),
+                                                   imageAddress: document.get("imageAddress") as? String ?? "",
+                                                   favorite: document.get("favorite") as? Int ?? 0)
+                    
+                    self.newDocumentId = content.id
+                }
+            }
+        }
+    }
+    
+    func getRouteData(_ id: String) {
+        db.collection("Content").document(id).collection("Route").addSnapshotListener { (snapshot, err) in
+            if let err = err {
+                print("Error getting in Route : \(err)")
+            } else {
+                for doc in snapshot!.documents {
+                    let route: RouteName = RouteName(id: doc.documentID,
+                                                     name: doc.get("name") as? String ?? "",
+                                                     section: doc.get("section") as? Int ?? 0,
+                                                     point: (doc.get("geopoint") as? GeoPoint)!,
+                                                     imageAddress: doc.get("imageAddress") as? String ?? "")
+                    
+                    if route.section == 0 {
+                        self.tmp0.append(route)
+                        self.section0 = Array(Set(self.tmp0))
+                    } else if route.section == 1 {
+                        self.tmp1.append(route)
+                        self.section1 = Array(Set(self.tmp1))
+                    } else if route.section == 2 {
+                        self.tmp2.append(route)
+                        self.section2 = Array(Set(self.tmp2))
+                    } else if route.section == 3 {
+                        self.tmp3.append(route)
+                        self.section3 = Array(Set(self.tmp3))
+                    } else if route.section == 4 {
+                        self.tmp4.append(route)
+                        self.section4 = Array(Set(self.tmp4))
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func updateMapView() {
+        if section0.isEmpty != true {
+            for i in 0..<section0.count {
+                loadMapView(latitude: section0[i].point.latitude, longitude: section0[i].point.latitude)
+            }
+        }
+        
+        if section1.isEmpty != true {
+            for i in 0..<section1.count {
+                loadMapView(latitude: section1[i].point.latitude, longitude: section1[i].point.latitude)
+            }
+        }
+        
+        if section2.isEmpty != true {
+            for i in 0..<section2.count {
+                loadMapView(latitude: section2[i].point.latitude, longitude: section2[i].point.latitude)
+            }
+        }
+        
+        if section3.isEmpty != true {
+            for i in 0..<section3.count {
+                loadMapView(latitude: section3[i].point.latitude, longitude: section3[i].point.latitude)
+            }
+        }
+    }
+    
+    func loadMapView(latitude x: Double, longitude y: Double) {
+        let mapPoint: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: x, longitude: y))
         // Jeju City Hall
         let mapPoint2: MTMapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 33.499598, longitude:  126.531259))
         innerView.backgroundColor = UIColor.gray
         innerView.addSubview(loadKakaoMap(point: mapPoint, point2: mapPoint2))
         
-        mapView?.addPOIItems(createMarker(point: mapPoint, point2: mapPoint2))
+        // marker
+        mapView?.addPOIItems(createMarker(point: mapPoint))
+        mapView?.fitAreaToShowAllPOIItems()
+        
+        // polyline
         mapView?.addPolyline(createPolyline(point: mapPoint, point2: mapPoint2))
     }
+    
     func setEnableConfirmButton(){
         confirmButtonView.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.calTime(_:)))
@@ -58,7 +206,6 @@ class AddRouteViewController: UIViewController {
     }
     
     @objc func calTime(_ sender:UITapGestureRecognizer){
-        print("touched")
         tableView.isHidden = false
         hideView.isHidden = false
         let firstDay = UserDefaults.standard.value(forKey: "firstDate") as! Date
@@ -67,12 +214,14 @@ class AddRouteViewController: UIViewController {
         let days : Int = Int(result / 86399) + 1
         UserDefaults.standard.set(days, forKey: "days")
         tableView.reloadData()
-        loadMapView()
+        loadMapView(latitude: point.latitude, longitude: point.longitude)
     }
+    
     @IBAction func selectStartDate(_ sender: Any) {
         pickerView.isHidden = false
         createStartDatePicker()
     }
+    
     @IBAction func selectFinishDate(_ sender: Any) {
         pickerView.isHidden = false
         createFinishDatePicker()
@@ -125,34 +274,84 @@ class AddRouteViewController: UIViewController {
         UserDefaults.standard.set(pickerView.date, forKey: "lastDate")
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM월 dd일"
+        
         let selectedDate: String = dateFormatter.string(from: pickerView.date)
         confirmButtonView.isHidden = false
         setEnableConfirmButton()
         startDate.text = startTextField.text
         endDate.text = selectedDate
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        
         let showSelectedDate: String = dateFormatter.string(from: pickerView.date)
         finishTextField.text = showSelectedDate
         finishTextField.resignFirstResponder()
         pickerView.isHidden = true
         tableView.reloadData()
-        print(pickerView.date)
+        
+        navigationItem.rightBarButtonItem = saveButton
     }
     
     @objc func finishCancelClick() {
         finishTextField.resignFirstResponder()
     }
     
+    //MARK: - Save
+    @IBAction func saveClick(_ sender: Any) {
+        let alertController = UIAlertController(title: "저장", message: "저장하시겠습니까?", preferredStyle: .alert)
+        
+        let okButton = UIAlertAction(title: "확인", style: .default, handler: { _ in
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
+        })
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { _ in
+            self.db.collection("Content").document(self.newDocumentId).collection("Route").getDocuments { (snapshot, err) in
+                snapshot?.documents.forEach { $0.reference.delete() }
+            }
+            
+            self.db.collection("Content").document(self.newDocumentId).collection("Favorite").getDocuments { (snapshot, err) in
+                snapshot?.documents.forEach { $0.reference.delete() }
+            }
+            
+            self.db.collection("Content").document(self.newDocumentId).collection("Comment").getDocuments { (snapshot, err) in
+                snapshot?.documents.forEach { $0.reference.delete() }
+            }
+            
+            self.db.collection("Content").document(self.newDocumentId).delete(completion: { (err) in
+                if let err = err {
+                    print("Error getting Delete Document : \(err)")
+                }
+            })
+            
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
+        })
+        
+        alertController.addAction(cancelButton)
+        alertController.addAction(okButton)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "addRoute" {
+            if let row = tableView.indexPathForSelectedRow {
+                let vc = segue.destination as? RouteListViewController
+                vc?.section = row.section
+                vc?.documentId = newDocumentId
+                vc?.location = self.location
+                vc?.email = auth.currentUser?.email ?? ""
+                
+                if section0.isEmpty != true {
+                    vc?.mainImageAddress = section0[0].imageAddress
+                }
+            }
+        }
     }
-    */
+    
 
 }
 
@@ -167,24 +366,80 @@ extension AddRouteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        if section == 0 {
+            if section0.isEmpty == true {
+                return 1
+            } else {
+                return section0.count
+            }
+        } else if section == 1 {
+            if section1.isEmpty == true {
+                return 1
+            } else {
+                return section1.count
+            }
+        } else if section == 2 {
+            if section2.isEmpty == true {
+                return 1
+            } else {
+                return section2.count
+            }
+        } else if section == 3 {
+            if section3.isEmpty == true {
+                return 1
+            } else {
+                return section3.count
+            }
+        } else if section == 4 {
+            if section4.isEmpty == true {
+                return 1
+            } else {
+                return section4.count
+            }
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "route", for: indexPath) as! AddRouteTableViewCell
-        
         cell.addRouteButton.isHidden = false
         
-//        if indexPath.section == 0 {
-//            cell.locationLabel.text = "제주대학교"
-//        } else if indexPath.section == 1 {
-//            cell.locationLabel.text = "제주시청"
-//        } else if indexPath.section == 2 {
-//            if cell.locationLabel.text == "" {
-//                cell.addRouteButton.isHidden = false
-//            }
-//        }
-//
+        switch indexPath.section {
+        case 0:
+            if section0.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section0[indexPath.row].name
+            }
+        case 1:
+            if section1.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section1[indexPath.row].name
+            }
+        case 2:
+            if section2.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section2[indexPath.row].name
+            }
+        case 3:
+            if section3.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section3[indexPath.row].name
+            }
+        case 4:
+            if section4.isEmpty == true {
+                cell.locationLabel.text = ""
+            } else {
+                cell.locationLabel.text = section4[indexPath.row].name
+            }
+        default:
+            cell.locationLabel.text = ""
+        }
+        
         return cell
     }
     
@@ -199,31 +454,24 @@ extension AddRouteViewController: UITableViewDelegate {
 
 extension AddRouteViewController: MTMapViewDelegate {
     
-    func createMarker(point mapPoint: MTMapPoint, point2 mapPoint2: MTMapPoint) -> [MTMapPOIItem] {
+    func createMarker(point mapPoint: MTMapPoint) -> [MTMapPOIItem] {
         let positionItem = MTMapPOIItem()
-        positionItem.itemName = "제주대학교"
+        positionItem.itemName = "제주도청"
         positionItem.mapPoint = mapPoint
         positionItem.markerType = .customImage
+        positionItem.tag = 0
+        
         if let path = Bundle.main.path(forResource: "map_pin_red", ofType: "png") {
             positionItem.customImage = UIImage(contentsOfFile: path)
         }
-//        positionItem.markerType = .bluePin
-//        positionItem.markerSelectedType = .bluePin
-        positionItem.tag = 0
 
-        let positionItem2 = MTMapPOIItem()
-        positionItem2.itemName = "제주시청"
-        positionItem2.mapPoint = mapPoint2
-        positionItem2.markerType = .bluePin
-        positionItem2.markerSelectedType = .bluePin
-        positionItem2.tag = 1
-
-        return [positionItem, positionItem2]
+        return [positionItem]
     }
 
     func createPolyline(point mapPoint: MTMapPoint, point2 mapPoint2: MTMapPoint) -> MTMapPolyline {
         let polyLine = MTMapPolyline()
         polyLine.addPoints([mapPoint, mapPoint2])
+        polyLine.polylineColor = .red
 
         return polyLine
     }
@@ -237,10 +485,9 @@ extension AddRouteViewController: MTMapViewDelegate {
         // Center Point
         mapView.setMapCenter(mapPoint, animated: true)
         // Zoom To
-        mapView.setZoomLevel(4, animated: true)
+        mapView.setZoomLevel(5, animated: true)
         mapView.baseMapType = .standard
         mapView.showCurrentLocationMarker = true
-        print("Marker: \(mapView.showCurrentLocationMarker)")
         mapView.currentLocationTrackingMode = .onWithoutHeading
         
         

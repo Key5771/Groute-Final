@@ -67,7 +67,14 @@ class ViewController: UIViewController {
                 self.content = []
                 
                 for doc in snapshot!.documents {
-                    let content: Content = Content(id: doc.documentID, email: doc.get("email") as? String ?? "", title: doc.get("title") as? String ?? "", memo: doc.get("memo") as? String ?? "", timestamp: (doc.get("timestamp") as! Timestamp).dateValue(), imageAddress: doc.get("imageAddress") as? String ?? "", favorite: 0)
+                    let content: Content = Content(id: doc.documentID,
+                                                   location: doc.get("location") as? String ?? "",
+                                                   email: doc.get("email") as? String ?? "",
+                                                   title: doc.get("title") as? String ?? "",
+                                                   memo: doc.get("memo") as? String ?? "",
+                                                   timestamp: (doc.get("timestamp") as! Timestamp).dateValue(),
+                                                   imageAddress: doc.get("imageAddress") as? String ?? "",
+                                                   favorite: 0)
                     
                     self.content.append(content)
                 }

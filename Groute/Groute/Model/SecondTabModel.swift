@@ -16,3 +16,10 @@ struct SecondTabModel {
     let point: GeoPoint
 }
 
+struct CurrentUserDocument: Hashable {
+    let id: String
+    let title: String
+    let imageAddress: String
+    let timestamp: Date
+}
+

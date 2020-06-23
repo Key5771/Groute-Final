@@ -16,9 +16,15 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     let db = Firestore.firestore()
+    let auth = Auth.auth()
     
     var cityName: [City] = []
     var filteredCityName: [City] = []
+    let stringLength: Int = 20
+    var createId: String = ""
+    var contentTitle: String = ""
+    var contentMemo: String = ""
+    var id: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +35,28 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         
         getCityName()
+        
+        getRealDocumentId()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateTitle()
+    }
+    
+    func getRealDocumentId() {
+        db.collection("Content").whereField("id", isEqualTo: createId).addSnapshotListener { (snapshot, err) in
+            for document in snapshot!.documents {
+                self.id = document.documentID
+            }
+        }
+    }
+    
+    func updateTitle() {
+        print("id: \(id)")
+        db.collection("Content").document(id).updateData([
+            "title": contentTitle,
+            "memo": contentMemo
+        ])
     }
     
     func getCityName() {
@@ -38,7 +66,6 @@ class SearchViewController: UIViewController {
             } else {
                 for document in snapshot!.documents {
                     let city: City = City(cityName: document.get("cityName") as? String ?? "", cityEtc: document.get("cityEtc") as? String ?? "", cityImage: document.get("cityImage") as? String ?? "", point: document.get("geopoint") as? GeoPoint ?? GeoPoint(latitude: 0, longitude: 0) )
-                    print("city: \(city)")
                     
                     self.cityName.append(city)
                 }
@@ -58,10 +85,12 @@ class SearchViewController: UIViewController {
                 
                 if searchBar.text != "" {
                     vc?.point = filteredCityName[row.row].point
+                    vc?.location = filteredCityName[row.row].cityName
                 } else {
                     vc?.point = cityName[row.row].point
+                    vc?.location = cityName[row.row].cityName
                 }
-                
+                vc?.createDocumentId = self.createId
                 tableView.deselectRow(at: row, animated: true)
             }
         }
@@ -70,6 +99,7 @@ class SearchViewController: UIViewController {
 
 }
 
+// MARK: - Extension SearchBar
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
@@ -86,6 +116,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+//MARK: - Extension TableView
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchBar.text != "" {

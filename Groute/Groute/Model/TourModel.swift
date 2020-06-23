@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Firebase
 
 struct TourModel {
     let id: String
@@ -15,4 +15,5 @@ struct TourModel {
     let imageAddress: String
     let name: String
     let roadAddress: String
+    let geoPoint: GeoPoint
 }

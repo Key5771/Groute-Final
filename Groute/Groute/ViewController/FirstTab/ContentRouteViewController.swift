@@ -11,7 +11,8 @@ import Firebase
 import Kingfisher
 
 class ContentRouteViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
-
+    
+    //MARK: - Local Variable
     var routeTime: String = ""
     var routeLocation: String = ""
     var routeMemo: String = ""
@@ -22,11 +23,13 @@ class ContentRouteViewController: UIViewController,UICollectionViewDataSource,UI
     var like: [Favorite] = []
     var likeCount : Int = 0
     var reviewCount : String = ""
+    var contentId: String = ""
+    var isExist : Bool = false
+    
+    //MARK: - Firebase Variable
     let db = Firestore.firestore()
     let firebaseAuth = Auth.auth()
-    var contentId: String = ""
     
-
     @IBOutlet var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -40,66 +43,136 @@ class ContentRouteViewController: UIViewController,UICollectionViewDataSource,UI
         // Do any additional setup after loading the view.
         
     }
-        func getRoute() {
-            for i in 0...100 {
-                db.collection("Content").document(contentId).collection("Route").whereField("section", isEqualTo: i).getDocuments() { (querysnapshot, err) in
-                    if let err = err {
-                        print("Error getting data : \(err)")
-                    }else {
-                        self.ex1 = []
-                        for document in querysnapshot!.documents {
-                            print("\(document.documentID) => \(document.get("name")) , \(document.get("section")) \(i)")
-                            self.ex1.append(document.get("name") as! String)
-                            print("ex1: \(self.ex1) 0")
-                        }
-                        if self.ex1.isEmpty == true {
-                            return
-                        }else{
-                            self.exRoutes.append(self.ex1)
-                            print(self.exRoutes)
-                        }
-                    }
-
-                }
-            }
-    }
-            func getLikeCount(){
-                db.collection("Content").document(contentId).collection("Favorite").getDocuments{ (querySnapshot, err) in
-                    if let err = err {
-                        print("Error getting Review Data: \(err)")
-                    } else {
-                        self.like = []
-                        for document in querySnapshot!.documents{
-                            let getLike : Favorite = Favorite(email: document.get("email") as! String)
-                            self.like.append(getLike)
-                        }
-                        self.likeCount = self.like.count
-                    }
-                }
-                
-            }
-    @objc func likeButtonClicked(sender: UIButton){
-        print("hello")
-    }
-        func getReview(){
-            db.collection("Content").document(contentId).collection("Comment").getDocuments{ (querySnapshot, err) in
+    
+    func getRoute() {
+        for i in 0...100 {
+            db.collection("Content").document(contentId).collection("Route").whereField("section", isEqualTo: i).getDocuments() { (querysnapshot, err) in
                 if let err = err {
-                    print("Error getting Review Data: \(err)")
+                    print("Error getting data : \(err)")
                 } else {
-                    self.review = []
-                    for document in querySnapshot!.documents{
-                        let time = (document.get("timestamp") as! Timestamp).dateValue()
-                        let checkNum = Date().timeIntervalSince(time)
-                        let getReview : Comment = Comment(email: document.get("email") as! String, content: document.get("comment") as! String, timestamp: (document.get("timestamp") as! Timestamp).dateValue() ,calcTime: self.calTime(time: checkNum))
-                        self.review.append(getReview)
+                    self.ex1 = []
+                    for document in querysnapshot!.documents {
+                        print("\(document.documentID) => \(document.get("name")) , \(document.get("section")) \(i)")
+                        self.ex1.append(document.get("name") as! String)
+                        print("ex1: \(self.ex1) 0")
                     }
-                    self.review.sort { $0.timestamp > $1.timestamp}
-                    self.reviewCount = "(\(self.review.count))"
-                    self.collectionView.reloadData()
                     
+                    if self.ex1.isEmpty == true {
+                        return
+                    } else{
+                        self.exRoutes.append(self.ex1)
+                        print(self.exRoutes)
+                    }
                 }
             }
         }
+    }
+    
+    @objc func likeButtonClicked(sender: UIButton) {
+        getExistLikeLocation()
+        collectionView.reloadData()
+    }
+    
+    func checkLikeImage()  {
+        guard let currentUser = firebaseAuth.currentUser?.email else { return }
+//        let likeLocation = db.collection("Content").document(contentId).collection("Favorite")
+//        let checkLike = likeLocation.whereField("email", isEqualTo: currentUser)
+//        checkLike.addSnapshotListener { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error : \(err)")
+//            } else {
+//                if querySnapshot?.isEmpty == true {
+//                    self.isExist = false
+//                } else {
+//                    self.isExist = true
+//                }
+//            }
+//        }
+        
+        db.collection("Content")
+            .document(contentId)
+            .collection("Favorite")
+            .whereField("email", isEqualTo: currentUser)
+            .addSnapshotListener { (snapshot, err) in
+                if let err = err {
+                    print("err : \(err)")
+                } else {
+                    if snapshot?.isEmpty == true {
+                        self.isExist = false
+                    } else {
+                        self.isExist = true
+                    }
+                }
+        }
+    }
+    
+    func getExistLikeLocation() {
+        guard let currentUser = firebaseAuth.currentUser?.email else { return }
+        let likeLocation = db.collection("Content").document(contentId).collection("Favorite")
+        let checkLike = likeLocation.whereField("email", isEqualTo: currentUser)
+        checkLike.addSnapshotListener { (querySnapshot, err) in
+            if let err = err {
+                print("Error : \(err)")
+            } else {
+                if querySnapshot?.isEmpty == true {
+                    likeLocation.addDocument(data: ["email" : currentUser])
+                    self.isExist = true
+                    self.getLikeCount()
+                } else {
+//                    for document in querySnapshot!.documents {
+//                        likeLocation.document(document.documentID).delete()
+//                        self.isExist = false
+//                        self.getLikeCount()
+//                        self.collectionView.reloadData()
+//                        break
+//                    }
+                    likeLocation.document(self.contentId).delete()
+                    self.isExist = false
+                    self.getLikeCount()
+                }
+                
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    func getLikeCount() {
+        checkLikeImage()
+        db.collection("Content").document(contentId).collection("Favorite").addSnapshotListener{ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting Review Data: \(err)")
+            } else {
+                self.like = []
+                for document in querySnapshot!.documents{
+                    let getLike : Favorite = Favorite(email: document.get("email") as! String)
+                    self.like.append(getLike)
+                }
+                self.likeCount = self.like.count
+                self.collectionView.reloadData()
+            }
+        }
+        
+    }
+    
+    func getReview(){
+        db.collection("Content").document(contentId).collection("Comment").addSnapshotListener{ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting Review Data: \(err)")
+            } else {
+                self.review = []
+                for document in querySnapshot!.documents{
+                    let time = (document.get("timestamp") as! Timestamp).dateValue()
+                    let checkNum = Date().timeIntervalSince(time)
+                    let getReview : Comment = Comment(email: document.get("email") as? String ?? "", content: document.get("comment") as? String ?? "", timestamp: (document.get("timestamp") as? Timestamp)!.dateValue(), calcTime: self.calTime(time: checkNum))
+                    self.review.append(getReview)
+                }
+                self.review.sort { $0.timestamp > $1.timestamp}
+                self.reviewCount = "(\(self.review.count))"
+                self.collectionView.reloadData()
+                
+            }
+        }
+    }
     
     func calTime(time: Double) -> String {
         let result : String
@@ -126,31 +199,33 @@ class ContentRouteViewController: UIViewController,UICollectionViewDataSource,UI
             return result
         }
     }
+    
     func getContent() {
-            db.collection("Content").document(contentId).getDocument { (snapshot, err) in
-                if let err = err {
-                    print("Error getting ContentViewController : \(err)")
-                } else {
-                    if let location = snapshot?.get("location") as? String {
-                        self.routeLocation = location + " 여행"
-                    }
-                    if let memo = snapshot?.get("memo") as? String {
-                        self.routeMemo = memo
-                    }
-                    
-                    if let user = snapshot?.get("email") as? String {
-                        self.routeUser = user
-                    }
-                    
-                    if let timestamp = snapshot?.get("timestamp") as? Timestamp {
-                        let dateFormat: DateFormatter = DateFormatter()
-                        dateFormat.dateFormat = "yyyy년 MM월 dd일"
-                        let time = dateFormat.string(from: timestamp.dateValue())
-                        self.routeTime = time
-                    }
-                    self.collectionView.reloadData()
+        db.collection("Content").document(contentId).getDocument { (snapshot, err) in
+            if let err = err {
+                print("Error getting ContentViewController : \(err)")
+            } else {
+                if let title = snapshot?.get("title") as? String {
+                    self.routeLocation = title
                 }
+                if let memo = snapshot?.get("memo") as? String {
+                    self.routeMemo = memo
+                }
+                
+                if let user = snapshot?.get("email") as? String {
+                    self.routeUser = user
+                }
+                
+                if let timestamp = snapshot?.get("timestamp") as? Timestamp {
+                    let dateFormat: DateFormatter = DateFormatter()
+                    dateFormat.dateFormat = "yyyy년 MM월 dd일"
+                    let time = dateFormat.string(from: timestamp.dateValue())
+                    self.routeTime = time
+                }
+                
+                self.collectionView.reloadData()
             }
+        }
     }
     
     
@@ -159,13 +234,14 @@ class ContentRouteViewController: UIViewController,UICollectionViewDataSource,UI
         return exRoutes.count + 2
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-           let indexPath = IndexPath(row: 0, section: section)
-           let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
+        let indexPath = IndexPath(row: 0, section: section)
+        let headerView = self.collectionView(collectionView, viewForSupplementaryElementOfKind: UICollectionView.elementKindSectionHeader, at: indexPath)
         if section == 0 {
             return CGSize(width: collectionView.frame.width, height: 0)
         }
         return CGSize(width: collectionView.frame.width, height: 50)
-       }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
@@ -186,20 +262,21 @@ class ContentRouteViewController: UIViewController,UICollectionViewDataSource,UI
             assert(false, "no")
         }
     }
-        func filteringSection (data : Int) -> Int {
-            var cells : Int = 0
-            if data == 0 {
-                cells = 4
-            }
-            if data == exRoutes.count + 1 {
-                cells = review.count
-            }
-            if data != 0 && data != exRoutes.count+1{
-                cells = exRoutes[data-1].count
-            }
-            return cells
+    
+    func filteringSection (data : Int) -> Int {
+        var cells : Int = 0
+        if data == 0 {
+            cells = 4
+        }
+        if data == exRoutes.count + 1 {
+            cells = review.count
+        }
+        if data != 0 && data != exRoutes.count+1{
+            cells = exRoutes[data-1].count
+        }
+        return cells
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteringSection(data: section)
     }
@@ -211,22 +288,29 @@ class ContentRouteViewController: UIViewController,UICollectionViewDataSource,UI
                 cell.locationLabel.text = routeLocation
                 cell.timeLabel.text = routeTime
                 return cell
-            }else if indexPath.row == 1{
+            } else if indexPath.row == 1{
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "map", for: indexPath)
                 return cell
-            }else if indexPath.row == 2 {
+            } else if indexPath.row == 2 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "likeUsername", for: indexPath) as! LikeUserCollectionViewCell
+                
+                if isExist == false {
+                    cell.likeButton.setImage(UIImage(systemName: "suit.heart"), for: .normal)
+                } else if isExist == true {
+                    cell.likeButton.setImage(UIImage(systemName: "suit.heart.fill"), for: .normal)
+                }
+                
                 cell.likeButton.tag = indexPath.row
                 cell.likeCount.text = String(likeCount)
                 cell.likeButton.addTarget(self, action: #selector(ContentRouteViewController.likeButtonClicked(sender:)), for: .touchUpInside)
                 cell.userLabel.text = routeUser
                 return cell
-            }else if indexPath.row == 3 {
+            } else if indexPath.row == 3 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memo", for: indexPath) as! MemoCollectionViewCell
                 cell.memoLabel.text = routeMemo
                 return cell
             }
-        }else if indexPath.section == numberOfSections(in: collectionView) - 1{
+        } else if indexPath.section == numberOfSections(in: collectionView) - 1{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reviewCell", for: indexPath) as! RouteReviewCollectionViewCell
             cell.userEmail.text = review[indexPath.row].email
             cell.reviewComment.text = review[indexPath.row].content
@@ -239,15 +323,15 @@ class ContentRouteViewController: UIViewController,UICollectionViewDataSource,UI
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 extension ContentRouteViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

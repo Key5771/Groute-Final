@@ -982,7 +982,7 @@
                                             <outlet property="locationAddress" destination="iDM-ta-tMu" id="Ex8-Dy-dcR"/>
                                             <outlet property="locationImageView" destination="U2p-Qf-5PY" id="ZFV-6t-2r4"/>
                                             <outlet property="locationName" destination="4QH-ur-tkH" id="jYp-96-l52"/>
-                                            <segue destination="rJg-aO-JJD" kind="show" identifier="content" id="pwO-to-cBk"/>
+                                            <segue destination="Q8T-tg-rgw" kind="show" identifier="content" id="mJb-lm-NRF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1020,9 +1020,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQm-Ct-wsW" userLabel="TimeLocationView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="70"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqV-FA-14R">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqV-FA-14R">
                                         <rect key="frame" x="8" y="8" width="406" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="406" id="KzZ-bW-sps"/>
@@ -1055,23 +1055,22 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHW-II-sC5">
-                                <rect key="frame" x="0.0" y="114" width="414" height="1213"/>
+                                <rect key="frame" x="0.0" y="158" width="414" height="1169"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-rr-dNr" userLabel="MapView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;MAP&quot;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkB-2N-opF">
-                                                <rect key="frame" x="168" y="69" width="78.5" height="32.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bm0-SW-uZg">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="414" id="QOl-AV-eu8"/>
-                                            <constraint firstItem="vkB-2N-opF" firstAttribute="centerX" secondItem="xjB-rr-dNr" secondAttribute="centerX" id="cbM-Wg-rVK"/>
-                                            <constraint firstItem="vkB-2N-opF" firstAttribute="centerY" secondItem="xjB-rr-dNr" secondAttribute="centerY" id="eab-JL-qDP"/>
+                                            <constraint firstAttribute="trailing" secondItem="bm0-SW-uZg" secondAttribute="trailing" id="ch9-AY-exM"/>
+                                            <constraint firstItem="bm0-SW-uZg" firstAttribute="top" secondItem="xjB-rr-dNr" secondAttribute="top" id="nEK-R3-CqR"/>
+                                            <constraint firstAttribute="bottom" secondItem="bm0-SW-uZg" secondAttribute="bottom" id="szn-9p-uSq"/>
+                                            <constraint firstItem="bm0-SW-uZg" firstAttribute="leading" secondItem="xjB-rr-dNr" secondAttribute="leading" id="tH7-ne-Xt9"/>
                                             <constraint firstAttribute="height" constant="170" id="wOC-Eg-eoT"/>
                                         </constraints>
                                     </view>
@@ -1366,8 +1365,6 @@
                                     <constraint firstItem="WcK-bX-FOg" firstAttribute="leading" secondItem="HHW-II-sC5" secondAttribute="leading" id="GPU-eH-Nu2"/>
                                     <constraint firstItem="QB1-jw-JoN" firstAttribute="leading" secondItem="HHW-II-sC5" secondAttribute="leading" id="KCe-TW-yQr"/>
                                     <constraint firstItem="TbH-7F-D6R" firstAttribute="leading" secondItem="HHW-II-sC5" secondAttribute="leading" id="N1k-Rs-hxf"/>
-                                    <constraint firstAttribute="trailing" secondItem="QB1-jw-JoN" secondAttribute="trailing" id="OEr-ot-fnB"/>
-                                    <constraint firstItem="QB1-jw-JoN" firstAttribute="leading" secondItem="HHW-II-sC5" secondAttribute="leading" id="TuE-f9-Duh"/>
                                     <constraint firstAttribute="trailing" secondItem="WcK-bX-FOg" secondAttribute="trailing" id="VWU-TP-CN4"/>
                                     <constraint firstAttribute="bottom" secondItem="QB1-jw-JoN" secondAttribute="bottom" constant="243.5" id="a2o-h6-1tR"/>
                                     <constraint firstAttribute="trailing" secondItem="TbH-7F-D6R" secondAttribute="trailing" id="cmn-WR-JOA"/>
@@ -1406,6 +1403,7 @@
                         <outlet property="numberOfLikes" destination="IpA-pF-aDK" id="nu1-VX-6ep"/>
                         <outlet property="reviewCount" destination="6Vy-dG-jBY" id="SuS-bl-1EL"/>
                         <outlet property="reviewTextField" destination="Pyq-KI-LDZ" id="hxt-de-RM4"/>
+                        <outlet property="routeImage" destination="bm0-SW-uZg" id="gBr-PS-kCv"/>
                         <outlet property="routeReviewCollectionView" destination="RyM-so-6Ia" id="Bgk-HY-Dbm"/>
                         <outlet property="routeTableView" destination="RJx-cB-ubS" id="An2-5G-cpg"/>
                         <outlet property="timeLabel" destination="LqV-FA-14R" id="Vn7-6c-Qjj"/>
@@ -1425,7 +1423,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="x0s-tG-Yga">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K0o-Vl-OSc">
                                     <size key="itemSize" width="414" height="87"/>
@@ -1696,7 +1694,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bkq-mR-1KZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="747.82608695652175" y="-761.38392857142856"/>
+            <point key="canvasLocation" x="807" y="-1463"/>
         </scene>
         <!--Title View Controller-->
         <scene sceneID="C1q-mh-21l">

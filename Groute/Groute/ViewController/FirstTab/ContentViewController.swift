@@ -17,6 +17,7 @@ class ContentViewController: UIViewController {
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var routeTableView: UITableView!
     @IBOutlet var routeReviewCollectionView: UICollectionView!
+    @IBOutlet var routeImage: UIImageView!
     @IBOutlet var reviewCount: UILabel!
     @IBOutlet var numberOfLikes: UILabel!
     @IBOutlet var likebtn: UIButton!
@@ -111,7 +112,7 @@ class ContentViewController: UIViewController {
                 self.getLikeCount()
             }
         }
-        }
+    }
     func getLikeCount(){
         checkLikeImage()
         db.collection("Content").document(contentId).collection("Favorite").getDocuments{ (querySnapshot, err) in
@@ -138,8 +139,8 @@ class ContentViewController: UIViewController {
                 self.content = []
                 for document in querySnapshot!.documents{
                     //                    print("\(document.documentID) => \(document.data())")
-                    let getRouteName : RouteName = RouteName(id: document.documentID,
-                                                             name: document.documentID,
+                    let getRouteName : RouteName = RouteName(id: document.get("email") as? String ?? "",
+                                                             name: document.get("name") as? String ?? "",
                                                              section: document.get("section") as? Int ?? 0,
                                                              point: (document.get("geopoint") as? GeoPoint) ?? GeoPoint(latitude: 0.0, longitude: 0.0),
                                                              imageAddress: document.get("imageAddress") as? String ?? "")
@@ -208,6 +209,11 @@ class ContentViewController: UIViewController {
                 
                 if let user = snapshot?.get("email") as? String {
                     self.userLabel.text = user
+                }
+                if let routeImage = snapshot?.get("imageAddress") as? String {
+                    let url = URL(string: routeImage)
+                    self.routeImage.kf.setImage(with: url)
+            
                 }
                 
                 if let timestamp = snapshot?.get("timestamp") as? Timestamp {

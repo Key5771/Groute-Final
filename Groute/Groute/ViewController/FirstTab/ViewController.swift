@@ -114,7 +114,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "content" {
             if let row = tableView.indexPathForSelectedRow {
-                let vc = segue.destination as? ContentViewController
+                let vc = segue.destination as? ContentRouteViewController
                 
                 vc?.contentId = content[row.row].id
                 tableView.deselectRow(at: row, animated: true)

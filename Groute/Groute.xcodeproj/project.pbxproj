@@ -15,6 +15,10 @@
 		B56395712494EE370069E2E6 /* RouteReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */; };
 		B584062E2471454700DB89F3 /* SecondTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */; };
 		B58406302471653300DB89F3 /* SecondTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584062F2471653300DB89F3 /* SecondTabModel.swift */; };
+		B5B4BB68249F365800144552 /* ContentRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4BB67249F365800144552 /* ContentRouteViewController.swift */; };
+		B5B4BB6B249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4BB69249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift */; };
+		B5B4BB6C249FB16A00144552 /* FirstTabRouteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B4BB6A249FB16A00144552 /* FirstTabRouteCollectionViewCell.xib */; };
+		B5B7577624A098DF009430D3 /* FirstTabCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B7577424A098DF009430D3 /* FirstTabCollectionReusableView.swift */; };
 		B5DBD270245C182300BED602 /* SetNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */; };
 		EA3ABE20248511B500ACDFF3 /* AddRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */; };
 		EA3ABE242485FCB700ACDFF3 /* AddRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE232485FCB700ACDFF3 /* AddRouteTableViewCell.swift */; };
@@ -86,6 +90,10 @@
 		B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabTableViewCell.swift; sourceTree = "<group>"; };
 		B584062F2471653300DB89F3 /* SecondTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabModel.swift; sourceTree = "<group>"; };
+		B5B4BB67249F365800144552 /* ContentRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouteViewController.swift; sourceTree = "<group>"; };
+		B5B4BB69249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabRouteCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5B4BB6A249FB16A00144552 /* FirstTabRouteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstTabRouteCollectionViewCell.xib; sourceTree = "<group>"; };
+		B5B7577424A098DF009430D3 /* FirstTabCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabCollectionReusableView.swift; sourceTree = "<group>"; };
 		B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewController.swift; sourceTree = "<group>"; };
 		EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteViewController.swift; sourceTree = "<group>"; };
 		EA3ABE232485FCB700ACDFF3 /* AddRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteTableViewCell.swift; sourceTree = "<group>"; };
@@ -229,6 +237,7 @@
 			children = (
 				EA517EF024540D9D00F32E86 /* ViewController.swift */,
 				EAB3410524810C06009EAF80 /* ContentViewController.swift */,
+				B5B4BB67249F365800144552 /* ContentRouteViewController.swift */,
 			);
 			path = FirstTab;
 			sourceTree = "<group>";
@@ -278,6 +287,9 @@
 				EA3ABE27248627A000ACDFF3 /* RouteListTableViewCell.swift */,
 				B563956A2494E8E60069E2E6 /* ContentRouteTableViewCell.swift */,
 				B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */,
+				B5B4BB69249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift */,
+				B5B4BB6A249FB16A00144552 /* FirstTabRouteCollectionViewCell.xib */,
+				B5B7577424A098DF009430D3 /* FirstTabCollectionReusableView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -533,6 +545,7 @@
 				EAD7AD4C243C3ACC00B63AE7 /* LaunchScreen.storyboard in Resources */,
 				EAD7ADB1243C728C00B63AE7 /* GoogleService-Info.plist in Resources */,
 				EAD7AD49243C3ACC00B63AE7 /* Assets.xcassets in Resources */,
+				B5B4BB6C249FB16A00144552 /* FirstTabRouteCollectionViewCell.xib in Resources */,
 				EA3ABE2B249DC43E00ACDFF3 /* map_pin_red.png in Resources */,
 				EAD7AD47243C3AC600B63AE7 /* Main.storyboard in Resources */,
 			);
@@ -701,6 +714,7 @@
 				EA3ABE262486279100ACDFF3 /* RouteListViewController.swift in Sources */,
 				EA3ABE242485FCB700ACDFF3 /* AddRouteTableViewCell.swift in Sources */,
 				B584062E2471454700DB89F3 /* SecondTabTableViewCell.swift in Sources */,
+				B5B7577624A098DF009430D3 /* FirstTabCollectionReusableView.swift in Sources */,
 				EA3ABE2A24867EA400ACDFF3 /* DetailTourViewController.swift in Sources */,
 				EAB3410E2481552A009EAF80 /* City.swift in Sources */,
 				EA3ABE28248627A000ACDFF3 /* RouteListTableViewCell.swift in Sources */,
@@ -719,7 +733,9 @@
 				EAB3410624810C06009EAF80 /* ContentViewController.swift in Sources */,
 				B56395712494EE370069E2E6 /* RouteReviewCollectionViewCell.swift in Sources */,
 				EABF08FB2456ACC900519E79 /* MainTableViewCell.swift in Sources */,
+				B5B4BB68249F365800144552 /* ContentRouteViewController.swift in Sources */,
 				EAD7AD42243C3AC600B63AE7 /* SceneDelegate.swift in Sources */,
+				B5B4BB6B249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift in Sources */,
 				B50DA273246E83A400430811 /* SecondTabViewController.swift in Sources */,
 				B58406302471653300DB89F3 /* SecondTabModel.swift in Sources */,
 			);

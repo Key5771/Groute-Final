@@ -84,5 +84,129 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B25DE49-5C3A-4771-9C49-C0B096487D57"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Groute/ViewController/FirstTab/ContentRouteViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "ContentRouteViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "6B25DE49-5C3A-4771-9C49-C0B096487D57 - a0a6b74eae65eb9d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Groute.ContentRouteViewController.routeTime.getter : Swift.String"
+                  moduleName = "Groute"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minjae/Documents/GitHub/Groute-Final/Groute/Groute/ViewController/FirstTab/ContentRouteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "139">
+               </Location>
+               <Location
+                  uuid = "6B25DE49-5C3A-4771-9C49-C0B096487D57 - 7138a9e55ba2dbc1"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Groute.ContentRouteViewController.routeTime.setter : Swift.String"
+                  moduleName = "Groute"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minjae/Documents/GitHub/Groute-Final/Groute/Groute/ViewController/FirstTab/ContentRouteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "150">
+               </Location>
+               <Location
+                  uuid = "6B25DE49-5C3A-4771-9C49-C0B096487D57 - b8cd956ad82a6f94"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Groute.ContentRouteViewController.routeTime.modify : Swift.String"
+                  moduleName = "Groute"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minjae/Documents/GitHub/Groute-Final/Groute/Groute/ViewController/FirstTab/ContentRouteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "6B25DE49-5C3A-4771-9C49-C0B096487D57 - 297f393b21ae38f2"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Groute.ContentRouteViewController.routeTime.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Groute"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minjae/Documents/GitHub/Groute-Final/Groute/Groute/ViewController/FirstTab/ContentRouteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "6B25DE49-5C3A-4771-9C49-C0B096487D57 - b1719842ac40684d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Groute.ContentRouteViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Groute.ContentRouteViewController"
+                  moduleName = "Groute"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minjae/Documents/GitHub/Groute-Final/Groute/Groute/ViewController/FirstTab/ContentRouteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "1910">
+               </Location>
+               <Location
+                  uuid = "6B25DE49-5C3A-4771-9C49-C0B096487D57 - 5c05561908d39302"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Groute.ContentRouteViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Groute.ContentRouteViewController&gt;"
+                  moduleName = "Groute"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minjae/Documents/GitHub/Groute-Final/Groute/Groute/ViewController/FirstTab/ContentRouteViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "1841">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1C5C2E9-DDC7-443F-B182-79B7CE8B68D9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Groute/ViewController/FirstTab/ContentRouteViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

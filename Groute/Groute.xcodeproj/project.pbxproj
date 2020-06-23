@@ -10,11 +10,17 @@
 		0DD84D8CECB50915E8A6529B /* Pods_Groute_GrouteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3562A0E2E440E4C1B849A9B /* Pods_Groute_GrouteUITests.framework */; };
 		1D6983940A3AEF0E34F8CDDE /* Pods_GrouteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BCDCC47B52B47F23CE80D6 /* Pods_GrouteTests.framework */; };
 		B50DA273246E83A400430811 /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50DA272246E83A400430811 /* SecondTabViewController.swift */; };
+		B530F28724A0E2EC0037D5A2 /* TimeLocationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530F28624A0E2EC0037D5A2 /* TimeLocationCollectionViewCell.swift */; };
+		B530F28924A0E38A0037D5A2 /* LikeUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530F28824A0E38A0037D5A2 /* LikeUserCollectionViewCell.swift */; };
+		B530F28B24A0E3D10037D5A2 /* MemoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530F28A24A0E3D10037D5A2 /* MemoCollectionViewCell.swift */; };
 		B55B679324582804003736D9 /* UserSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55B679224582804003736D9 /* UserSettingController.swift */; };
 		B563956B2494E8E60069E2E6 /* ContentRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B563956A2494E8E60069E2E6 /* ContentRouteTableViewCell.swift */; };
 		B56395712494EE370069E2E6 /* RouteReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */; };
 		B584062E2471454700DB89F3 /* SecondTabTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */; };
 		B58406302471653300DB89F3 /* SecondTabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B584062F2471653300DB89F3 /* SecondTabModel.swift */; };
+		B5B4BB68249F365800144552 /* ContentRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4BB67249F365800144552 /* ContentRouteViewController.swift */; };
+		B5B4BB6B249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B4BB69249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift */; };
+		B5B7577624A098DF009430D3 /* FirstTabCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B7577424A098DF009430D3 /* FirstTabCollectionReusableView.swift */; };
 		B5DBD270245C182300BED602 /* SetNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */; };
 		EA3ABE20248511B500ACDFF3 /* AddRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */; };
 		EA3ABE242485FCB700ACDFF3 /* AddRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ABE232485FCB700ACDFF3 /* AddRouteTableViewCell.swift */; };
@@ -81,11 +87,17 @@
 		A3562A0E2E440E4C1B849A9B /* Pods_Groute_GrouteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Groute_GrouteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53CE80052D854CDFED1155A /* Pods-GrouteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrouteTests.debug.xcconfig"; path = "Target Support Files/Pods-GrouteTests/Pods-GrouteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B50DA272246E83A400430811 /* SecondTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
+		B530F28624A0E2EC0037D5A2 /* TimeLocationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLocationCollectionViewCell.swift; sourceTree = "<group>"; };
+		B530F28824A0E38A0037D5A2 /* LikeUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		B530F28A24A0E3D10037D5A2 /* MemoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B55B679224582804003736D9 /* UserSettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingController.swift; sourceTree = "<group>"; };
 		B563956A2494E8E60069E2E6 /* ContentRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouteTableViewCell.swift; sourceTree = "<group>"; };
-		B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RouteReviewCollectionViewCell.swift; path = ../RouteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabTableViewCell.swift; sourceTree = "<group>"; };
 		B584062F2471653300DB89F3 /* SecondTabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabModel.swift; sourceTree = "<group>"; };
+		B5B4BB67249F365800144552 /* ContentRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRouteViewController.swift; sourceTree = "<group>"; };
+		B5B4BB69249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabRouteCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5B7577424A098DF009430D3 /* FirstTabCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabCollectionReusableView.swift; sourceTree = "<group>"; };
 		B5DBD26F245C182300BED602 /* SetNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewController.swift; sourceTree = "<group>"; };
 		EA3ABE1F248511B500ACDFF3 /* AddRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteViewController.swift; sourceTree = "<group>"; };
 		EA3ABE232485FCB700ACDFF3 /* AddRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRouteTableViewCell.swift; sourceTree = "<group>"; };
@@ -214,6 +226,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B530F28524A0E2850037D5A2 /* FirstTabCells */ = {
+			isa = PBXGroup;
+			children = (
+				B530F28624A0E2EC0037D5A2 /* TimeLocationCollectionViewCell.swift */,
+				B530F28824A0E38A0037D5A2 /* LikeUserCollectionViewCell.swift */,
+				B530F28A24A0E3D10037D5A2 /* MemoCollectionViewCell.swift */,
+				B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */,
+			);
+			path = FirstTabCells;
+			sourceTree = "<group>";
+		};
 		B563956C2494E9670069E2E6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +252,7 @@
 			children = (
 				EA517EF024540D9D00F32E86 /* ViewController.swift */,
 				EAB3410524810C06009EAF80 /* ContentViewController.swift */,
+				B5B4BB67249F365800144552 /* ContentRouteViewController.swift */,
 			);
 			path = FirstTab;
 			sourceTree = "<group>";
@@ -271,13 +295,15 @@
 		EA4440A7247D28DF002F5D10 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B530F28524A0E2850037D5A2 /* FirstTabCells */,
 				B584062D2471454700DB89F3 /* SecondTabTableViewCell.swift */,
 				EABF08FA2456ACC900519E79 /* MainTableViewCell.swift */,
 				EAB3410B248153D2009EAF80 /* CityTableViewCell.swift */,
 				EA3ABE232485FCB700ACDFF3 /* AddRouteTableViewCell.swift */,
 				EA3ABE27248627A000ACDFF3 /* RouteListTableViewCell.swift */,
 				B563956A2494E8E60069E2E6 /* ContentRouteTableViewCell.swift */,
-				B56395702494EE370069E2E6 /* RouteReviewCollectionViewCell.swift */,
+				B5B4BB69249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift */,
+				B5B7577424A098DF009430D3 /* FirstTabCollectionReusableView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -701,6 +727,8 @@
 				EA3ABE262486279100ACDFF3 /* RouteListViewController.swift in Sources */,
 				EA3ABE242485FCB700ACDFF3 /* AddRouteTableViewCell.swift in Sources */,
 				B584062E2471454700DB89F3 /* SecondTabTableViewCell.swift in Sources */,
+				B530F28924A0E38A0037D5A2 /* LikeUserCollectionViewCell.swift in Sources */,
+				B5B7577624A098DF009430D3 /* FirstTabCollectionReusableView.swift in Sources */,
 				EA3ABE2A24867EA400ACDFF3 /* DetailTourViewController.swift in Sources */,
 				EAB3410E2481552A009EAF80 /* City.swift in Sources */,
 				EA3ABE28248627A000ACDFF3 /* RouteListTableViewCell.swift in Sources */,
@@ -709,6 +737,7 @@
 				EAD7AD44243C3AC600B63AE7 /* MapViewController.swift in Sources */,
 				EABF08FF2456D8DB00519E79 /* SignupViewController.swift in Sources */,
 				EA4440A9247D335E002F5D10 /* RouteModel.swift in Sources */,
+				B530F28724A0E2EC0037D5A2 /* TimeLocationCollectionViewCell.swift in Sources */,
 				EAD7AD40243C3AC600B63AE7 /* AppDelegate.swift in Sources */,
 				B5DBD270245C182300BED602 /* SetNicknameViewController.swift in Sources */,
 				EA54F51B24541BD500663333 /* TourModel.swift in Sources */,
@@ -719,7 +748,10 @@
 				EAB3410624810C06009EAF80 /* ContentViewController.swift in Sources */,
 				B56395712494EE370069E2E6 /* RouteReviewCollectionViewCell.swift in Sources */,
 				EABF08FB2456ACC900519E79 /* MainTableViewCell.swift in Sources */,
+				B5B4BB68249F365800144552 /* ContentRouteViewController.swift in Sources */,
 				EAD7AD42243C3AC600B63AE7 /* SceneDelegate.swift in Sources */,
+				B530F28B24A0E3D10037D5A2 /* MemoCollectionViewCell.swift in Sources */,
+				B5B4BB6B249FB16A00144552 /* FirstTabRouteCollectionViewCell.swift in Sources */,
 				B50DA273246E83A400430811 /* SecondTabViewController.swift in Sources */,
 				B58406302471653300DB89F3 /* SecondTabModel.swift in Sources */,
 			);

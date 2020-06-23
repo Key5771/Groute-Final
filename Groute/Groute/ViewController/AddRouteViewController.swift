@@ -472,8 +472,6 @@ extension AddRouteViewController: MTMapViewDelegate {
         let polyLine = MTMapPolyline()
         polyLine.addPoints([mapPoint, mapPoint2])
         polyLine.polylineColor = .red
-        
-        print("polyLine : \(String(describing: polyLine.mapPointList))")
 
         return polyLine
     }
